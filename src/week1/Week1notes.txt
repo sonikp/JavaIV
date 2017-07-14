@@ -1,0 +1,108 @@
+Instructor
+Name: James Gappy
+E-Mail Address: jgappy@gmail.com
+Virtual Office Hours: Flexible, will respond to email within 48 hrs.
+
+
+3 projects
+
+COURSE OBJECTIVES
+
+Building on “Java Programming III: Intermediate Java Programming”, you will cover all of the specific topics in the Oracle Certified Professional 
+Java Programmer (OCPJP) exam, including the Java runtime environment, generic collections, thread handling and synchronization, native methods, 
+standard file IO (java.io), socket-based network programming and serialization (java.net), and Java Remote Method Invocation (RMI). You will apply 
+object-oriented techniques (interfaces, abstract classes, inner classes, etc.) to create applications using Swing components (javax.swing) and appropriate 
+Javadoc comments. Additional topics include New I/O, JNI, and unit testing with JUnit.
+
+Course Highlights:
+
+-Effective Java
+-The Java Virtual Machine (JVM) - Managing Object Creation, Execution and Garbage Collection
+-Reflection
+-Annotations
+-Unit testing using JUnit
+-Generics Collections
+-Java I/O - Streams and Files
+-Concurrent Programming - Thread handling and Synchronization
+-Java Networking with Sockets
+-Distributed Java Applications - Webstart, RMI, JNI
+-Java Security
+
+Course Benefits:
+
+-Understand how to be a more effective Java developer
+-Learn advanced Java concepts and apply them in the real world
+-Gain the knowledge to prepare yourself for the Oracle Java certification exam
+
+
+LESSONS - on blackboard
+
+
+Lesson 1:  
+Syllabus, Introductions, JVM (Managing Object Creation, Execution and Garbage Collection)
+
+Lesson 2:
+Reflection basics, Annotations, Unit testing using JUnit
+
+
+Eclipse: (best one for this application)
+Eclipse IDE for Java Developers
+
+
+Lesson starts - 
+
+source code = .java
+byte code = .class
+
+
+native methods = will talk about these later
+
+
+What is the difference between "stack" and "heap" memory? RESEARCH
+- HEAP :: memory used to store objects during execution (variable)
+- STACK :: memory used to store variables	(reference variable to the variable)
+
+Follow the class path loader example slides
+
+# javap is the java class file disassembler
+
+
+Example (examines bytecode(.class),  has to be compiled, gives detailed information on the bytecode)
+# javap -s -verbose TestGC => (this is a class)
+
+
+ticketsatwork.com sign up for discounted tickets
+
+
+edit arguments in eclipse// heap size arguments
+
+
+# jconsole
+# jvisualvm
+
+
+
+JMX
+
+
+Reference Objects----------
+
+Assignment 1:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
