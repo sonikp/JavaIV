@@ -1,0 +1,28 @@
+This code is from the java.util.Collections binary search method. Identify the error, write a JUnit test to expose the error, and correct the code so that the test passes. You may need to experiment with heap size parameters in order to get your test code to run, and you may not be able to get your test code to run correctly.
+
+Rather than trying to use the Collections class, you should build a test class to hold this method.
+Hint: Try a Google search for "binary search bug"  
+
+Submit your Java JUnit text, and an explanation of what the error is in the comments.    
+
+ 1:     public static int binarySearch(int[] a, int key) {
+ 2:         int low = 0;
+ 3:         int high = a.length - 1;
+ 4:
+ 5:         while (low <= high) {
+ 6:             int mid = (low + high) / 2;
+ 7:             int midVal = a[mid];
+ 8:
+ 9:             if (midVal < key)
+10:                 low = mid + 1;
+11:             else if (midVal > key)
+12:                 high = mid - 1;
+13:             else
+14:                 return mid; // key found
+15:         }
+16:         return -(low + 1);  // key not found.
+17:     }
+
+
+Research:
+https://research.googleblog.com/2006/06/extra-extra-read-all-about-it-nearly.html

@@ -90,6 +90,82 @@ Reference Objects----------
 Assignment 1:
 
 
+-------------------------------------
+Study 
+-------------------------------------
+
+source code =  class files as .java
+bytecode = compiled java source-code as .class files
+JVM interprets the .class files
+
+
+
+-Compiled Java bytecode is executed by the Java runtime interpreter
+-It executes a stack-based instruction set and manages memory like an OS
+-Java specifies the sizes and mathematical properties for all its primitive data types rather than leaving it up to the platform implementation
+-The fundamental unit of Java code is the class
+-Classes are application components that hold executable code and data
+-Compiled Java classes are distributed ina universal binary format that contain Java bytecode and other clas information
+
+-Java is a statically typed, late binding language. Every object in Java jad a well-defined type tat is known at compile time.
+	-ie, Java compiler does static type checking analysis
+	-Java compiler prevents you from using uninitialized variables and creating unreachable statements 
+	-Java is fully runtime-typed as well, which keeps track of all objects, which makes it possible to determine their types and relationships during execution
+
+Dynamic Memory Management
+-Java manages all memory, maintains objects in memory, and the Java runtime system keeps track of all references to those objects
+-Java doesn't have pointers, it uses references, which is a safer kind of pointer.
+	-A reference is a strongly typed handle for an object
+	-All objects, with the exception of primitive numeric types are accessed through references
+	
+Error Handling
+
+Threads
+
+----
+Java: A Virtual Machine
+
+Safety of Design
+	-Type Safety and Method Binding
+	-Incremental Development
+	-Dynamic Memory Management
+	-Error Handling
+	-Threads
+	-Scalability
+	
+Safety of Implementation
+
+The Java security model wraps 3 layers of protection around imported classes:
+
+'untrusted source' ==> Java Binary | Verifier | Class Loader | Security Manager | System Resources.
+
+	- The Java bytecode verifier is a fixed part of the Java runtime system.
+
+	The Verifier:
+		- first line of defense is the "bytecode verifier"
+		- makes sure code is well behaved, & obeys the basic rules
+		- Verified code, 
+			- cannot forge references or violate access permissions on an object
+			- cannot perform illegal casts or use object in unintended ways
+			- cannot cause certain errors, such as overflowing or underflowing the internal stack
+		
+	Class Loader:
+		- is responsible for bringing the bytecode for Java clases into the interpreter
+		- after a class has been loaded and passed through the verifier, it remains associated with its class loader. Therefore classes are effectively partitioned into separate namespaces based on their origin
+		- 
+	
+	Security Manager:
+		- is responsible for making application-level security decisions.
+		- is an object that can be installed by an application to restrict access to system resources
+		- SM is consulted every time the application tries to access items such as the filesystem, network ports, external processes
+		
+Application an User-Level Security
+
+		
+		
+Examples of code from the textbook:
+https://github.com/patniemeyer/learningjava
+
 
 
 
