@@ -250,18 +250,75 @@ Tools
 
 
 Jar Files
+- Java archive, standard way and portable way to pack up all parts of your application into a compact bundle
 - java zip files, java archive files
+- a JAR file can also carry a digital signature, can be attached to the whole file or individual components
 - jar utility creates and reads jar files
+- the Java runtime system can load class files directly from an archive
+- nonclass files (data, images) can also be retrieved using the .getResource()
+ 
 	# jar -cvf jarFile path		=> create
 	# jar -tvf jarFile path 	=> list
 	# jar -xvf jarFile parh		=> extract
+
+Example:
+- you completed a new game, spaceblaster.
+- the classes are located in spaceblaster/game
+- the images are located in spaceblaster/images
+- the data is conatined in spaceblaster/docs
+- to compress run the following command:
+
+	# jar -cvf spaceblaster.jar spaceblaster
 	
+	to list:
+	
+	# jar -tvf spaceblaster.jar
+	
+	to extract an individual file:
+	
+	# jar -xvf spaceblaster.jar filename
+	
+JAR Manifest:
+- the jar command adds a directory called META-INF/	to archive
+- this directory holds files describing the contents of the .jar file
+- it must contain at least one file MANIFEST.MF
+- contains data as keyword:value pairs
+- must contain at least one line, location of tje primary main():
 
+	Main-Class: com.oreilly.game
+	
+- can contain other information:
+	
+	Manifest-Version: 1.0
+	Created-By: 1.7.0_07 (Oracle Corporation) 
 
+- can also contain hash information:
+	
+	Name: com/oreilly/Test.class
+	SHA1-Digest: dF2Dgj4lkviifJio894nJondliUbosX=
 
+Pack2000 - compression utility
+- achieves over 4x compression over zip utilities
 
+Policy Files
+- in Java security is built into the language
+- the JVM can verify class files, and Java's Security Manager can impose limits on what classes can do.
+- the system allows you to write policy files which tells the security manager what to allow / deny & for whom
 
+Default Security Manager
+- create EvilEmpire.java that makes a socket connection to a remote host
 
+	# java EvilEmpire
+	Connected!
+	
+	Now run policy
+	# java -Djava.security.manager EvilEmpire
+	SecurityException: could not connect!
+	
+Policy Tool # policytool
+- page 80
+
+*** Doesn't work for some reason
 
 
 

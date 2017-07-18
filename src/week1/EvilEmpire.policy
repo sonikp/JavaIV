@@ -1,0 +1,7 @@
+/* AUTOMATICALLY GENERATED ON Tue Jul 18 07:55:16 PDT 2017*/
+/* DO NOT EDIT */
+
+grant codeBase "file: /home/notroot/Java/tmp" {
+  permission java.net.SocketPermission "172.217.11.164", "connect";
+};
+
