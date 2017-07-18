@@ -123,11 +123,19 @@ Error Handling
 Threads
 
 ----
-Java: A Virtual Machine
+Chapter 1:: Java: A Virtual Machine
+
+- Java is both a compiled and interpreted language
+	- compiled: translating source-code to machine code
+	- interpreted: executes a set of instructions directly without compiling
+- Source-code is turned into binary instructions, called byte-code
+- Fundamental unit of java-code is the class
+- Classes hold executable code and data
+- Classes are located and loaded dynamically at runtime as they are needed by the application
 
 Safety of Design
-	-Type Safety and Method Binding
-	-Incremental Development
+	-Type Safety and Method Binding: Java is a statically typed, late binding language. Java runtime system keeps track of all objects and makes it possible to determine their types and relationships
+	-Incremental Development:
 	-Dynamic Memory Management
 	-Error Handling
 	-Threads
@@ -165,6 +173,101 @@ Application an User-Level Security
 		
 Examples of code from the textbook:
 https://github.com/patniemeyer/learningjava
+
+Chapter 2:: A First Application - All the HelloJava applications exercises
+
+Classes
+- are the fundamental building blocks of most object oriented languages
+- is a group of data items with associated functions to perform operations
+- data items in a class are called 'variables'
+- functions are called 'methods'
+
+Objects
+- are abstract entities
+
+Variables and Class Types
+- every class defines a new 'type'(data type)
+- class type variables are 'references' to objects
+	- a reference is a pointer to or a handle for an object
+
+Inheritance
+- java classes are arranged in a parent-child hierarchy aka superclass/subclass respectively
+- a subclass may inherit some or all the variables and methods of its superclass
+
+Components and Containers
+- are terms to describe graphical elements
+- Component is a base class from which all Java's GUI components are derived
+- Container is a class and an extended type of Component
+- the Container causes its children to be displayed and arrandes them on the screen according to a particular layout strategy
+
+Layout
+- a LayoutManager is an object which determines the location within the container for displaying another object
+
+
+Static Members
+- static variables and static methods are shared among all instances of the class
+- these do not change, and the common use of a static variable in a class is to hold predefined constants or unchanging objects that all instances can use
+
+Threads
+- is a separate flow of control within a program. 
+- multithreading is a way for an application to handle many different tasks at the same time.
+
+
+Chapter 3:: Tools of the trade
+
+Java JVM
+- implements the Java runtime system and executes the Java application
+- usually the interpreter itself it a native application 
+
+
+System Properties
+- allows any number of system property values to ne passed to the application when the VM is started
+- System properties are name:value pairs and are available to the application througn the static System.getProperty() method.
+- System.properties is passed to the interpreter on the command line using the -D option
+	Example # java -Dstreet=sesame -Dscene=alley animals.bird.BigBird
+	
+	The value of the street property is the accessible this way:
+	
+	String street = System.getProperty("street");
+	
+The Classpath
+- the CLASSPATH environment variable is a list of the locations that are searched for by the Java Class files
+- an element in a classpath can be a directory or a JAR file. could be ZIP but ZIP and JAR are really the same thing
+
+Tools
+- javap prints a description of a compiled class
+	# javap java.awt.Color
+	# javap java.util.Stack
+- also used for debugging classpath problems
+- -c option print the JVM instruction for each method in the class
+
+- javac :: Java compiler in the JDK
+- turns source-code into a compiled class that contains the Java bytecode
+- source-code are named with the .java extension
+- bytecode are named with the .class extension 
+- Java interpreter takes a class name is its argument
+- javac takes a .java file as its extension
+
+
+Jar Files
+- java zip files, java archive files
+- jar utility creates and reads jar files
+	# jar -cvf jarFile path		=> create
+	# jar -tvf jarFile path 	=> list
+	# jar -xvf jarFile parh		=> extract
+	
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
