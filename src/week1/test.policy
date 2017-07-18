@@ -1,0 +1,7 @@
+/* AUTOMATICALLY GENERATED ON Tue Jul 18 08:13:31 PDT 2017*/
+/* DO NOT EDIT */
+
+grant codeBase "file:/home/notroot/Java/tmp" {
+  permission java.security.AllPermission;
+};
+
