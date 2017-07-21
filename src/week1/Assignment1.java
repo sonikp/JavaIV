@@ -1,6 +1,15 @@
 package week1;
 
+public class Assignment1 {
 
+public static void main(String[] args) {
+	
+	int [] numbers = { 1,2,3,4,123,211 };
+	int key = 123;
+	int index = binarySearch(numbers, key);
+	System.out.println(index);
+	
+	}
 
      public static int binarySearch(int[] a, int key) 
      {
@@ -21,6 +30,7 @@ package week1;
          }
          return -(low + 1);  // key not found.
      }
+}
 
 /*
 public static int binarySearch(int[] a, int key)

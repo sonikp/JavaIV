@@ -1,0 +1,60 @@
+reflections
+annotations
+JUnit testing
+
+Appears to be chapter 7 in book
+
+Examples on class slides page 8
+
+Java.lang is imported by defaule
+
+ctril i = corrects indentation
+ctrl/shift/f = correct indentations
+
+
+See Demo of printSuperClass()   student/person/java.lang
+
+
+factory without reflection
+factory with reflection
+
+
+JUnit
+
+
+hover @Test right click and add JUnit4 to class path
+
+JUnit exercises:
+https://github.com/junit-team/junit4/wiki/Getting-started
+
+try:
+//  @Test (timeout=1005)
+  @Test(expected = InterruptedException.class)
+  
+  
+  
+  
+  
+  
+  
+  assignment 1
+  
+  experiment with heapsize parameters <= hint
+  ?? integer overflow
+  
+  
+  test for min/max inter val
+  test boundary: 1st, last, mid
+  test midpoint test
+  
+  sum overflow that happens
+  calculate midpoint given high/low
+  test boundary with size = 1
+  test empty array
+  test basic smoke test: binary search, assert = to find key
+  
+  problem has to do with midpoint high + low / 2
+  
+  
+
+
