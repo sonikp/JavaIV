@@ -40,7 +40,7 @@ try:
   assignment 1
   
   experiment with heapsize parameters <= hint
-  ?? integer overflow
+  look into integer overflow
   
   
   test for min/max inter val
