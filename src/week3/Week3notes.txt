@@ -1,0 +1,195 @@
+Lesson 3
+
+Introduction to Generics and Collections
+
+lesson notes lec03a lec03b
+
+- java collections Framework provides
+- interfaces
+
+- UML
+java.utils.Collections
+<t> => generics
+
+- set - no duplicate entries
+- lists -  can contain duplicates
+- map - set of pairs key:value pairs
+
+Slide 11
+- collection can add, remove, lookup isulated items in collection
+- maps - 
+
+slide 13:
+- set is a collection
+- 
+
+Java List, slide 15
+- list is a 
+- get() set()
+
+Java Maps
+
+
+Iterator
+- next()
+- remove()
+- hasNext()
+
+
+Implementation Classes
+NOTE: think about interfaces and not the implementations
+
+Choosing an Implementation
+
+
+Exercise: UniqueWords.java slide 23
+TreeSet - naturally sorts
+
+Set/SortedSet - interface/declaration
+
+Slide 30 - 
+immutable/mutable
+you don;t what to have keys as mutable objects
+
+
+compareTo when identical returns 0
+
+Slide 32
+
+Example Slide 33
+
+toString() returns the string representation of your object in memory
+System.out.println(object); will autmoatically call the toString() method
+
+Ternary operator, if/else on a single line 
+
+Comparator Interface
+Slide 36
+
+
+Using a Comparator Slide 38
+
+
+Generics - started in Java 5
+<T> next to a collection/arrayList
+
+Main purpose was to catch errors at compile time rather than runtime
+
+Easy migration between raw collections and generic collections
+Better way to do type-casting
+
+Parameter Definintion
+Parameter Usage slide 45
+
+
+-----
+Java I/p & O/p Slide 2 3b
+
+Stream is a one-way serial connection between a data yser and a data provider
+
+java.io
+
+Character Streams
+- types
+
+Byte Streams
+- types
+- used for binary data
+- used for object serialization
+
+
+Differences / similarities slide 8
+
+** make sure you close your streams
+** makes sure garbage collector can clear out memory if closed()
+
+
+
+object stream serialization
+
+flush() forces the write from buffer to destination
+
+public class person implements serializable // for getting a person to a file object via serializable {
+
+}
+
+Serializing
+
+?? what happens when you implement an interface
+
+normally for "implements" you have to implement all the implementable methods
+** you don't have to for the serializational interface
+
+RandomAccessFile Slide 16
+
+Slide 17 =  accesssing RandomAccessFiles
+
+FileObject
+
+File file = new file();
+
+provides additional methods to be used with the file object as opposed to a string object
+
+
+StreamTokenizier
+
+java.util.zip package
+Slide 21
+
+Figure out to build the stacks for streams
+
+Textfile I/O slide 25
+can also use scanner for read/write to/from files
+
+FileOutputStream("blahblahblah", true); // appends to the end of the file
+
+Slide 35
+DONT USE STRINGTOKENIZER, use string.split(" ");
+
+
+using path names / 
+slide 50
+
+Scanner filename = new Scanner(new File("filename.txt"));	// recommended for reading info from files
+
+NIO
+
+intro to read files using NIO
+
+java.nio VS. java.io		slide 58;
+
+What is a channel? object
+
+Accessor Method slide 68
+
+buffer slicing - slide 68
+
+NIO
+- move large amounts of data efficiently
+- multiplex large numbers of open sockets
+- OS-leve file locking 
+
+Java NIO addresses different needs.
+
+
+Assignment
+- collection framework
+- must be generic collection <t>
+- generate javadoc
+
+
+creates /doc => zip and submit this as the Javadocs for the assignment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
