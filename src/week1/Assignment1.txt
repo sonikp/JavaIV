@@ -1,7 +1,7 @@
-07/26/2017
-This code is from the java.util.Collections binary search method. Identify the error, write a JUnit test to expose 
-the error, and correct the code so that the test passes. You may need to experiment with heap size parameters 
-in order to get your test code to run, and you may not be able to get your test code to run correctly.
+This code is from the java.util.Collections binary search method. Identify the error, write a JUnit test 
+to expose the error, and correct the code so that the test passes. You may need to experiment with 
+heap size parameters in order to get your test code to run, and you may not be able to get your test 
+code to run correctly.
 
 Rather than trying to use the Collections class, you should build a test class to hold this method.
 Hint: Try a Google search for "binary search bug"  
