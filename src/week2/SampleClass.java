@@ -1,4 +1,7 @@
-package test;
+//package test;
+
+package week2;
+
 import junit.runner.Version;
 
 /**

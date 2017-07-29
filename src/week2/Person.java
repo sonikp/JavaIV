@@ -1,4 +1,5 @@
-package edu.ucsd.lecture2;
+//package edu.ucsd.lecture2;
+package week2;
 
 /**
  * 

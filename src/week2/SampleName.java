@@ -1,4 +1,6 @@
-package edu.ucsd.lecture2;
+//package edu.ucsd.lecture2;
+package week2;
+
 
 import java.lang.reflect.*;
 import java.awt.*;
