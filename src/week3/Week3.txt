@@ -1,0 +1,147 @@
+Week 3. 
+
+Lecture 3a: Generics, Collections, Javadoc
+   Learning Java: Chapter 8, and 11 (373-392)
+   Effective Java: Chapter 5
+
+
+Chapter 8 : Learning Java
+
+Generics
+- about abstraction
+- create classes and methods that work same on different types of objects
+- AKA parameterized types
+
+
+The Java Collections Framework
+Containers
+
+- List - holds ordered collection of elements of type Object
+- Map - holds key:value pairs
+- HashMap - 
+
+Casts
+
+Collections	- java.util.Collections;
+
+Java Collections Framework provides:
+- interfaces
+- algorithms
+
+Interfaces:
+- Collection
+	- List
+	- Set
+		- SortedSet
+- Map
+	- SortedMap
+
+List Classes:
+- ArrayList
+	- AbstractSequentialList
+- AbstractList
+	- AbstractSequentialList
+- LinkedList
+
+Set Classes:
+- SortedSet
+	- TreeSet
+- HashSet
+- AbstractSet
+
+Sets (defined)
+- a group of unique items, no duplicates
+- infinite/finite
+- can define abstract concepts
+
+Lists (defined)
+- elements listed in order
+- can contain duplicate items
+
+Map (defined)
+- map is a set of pairs key:value
+
+Differences "collections/maps"
+- collections : can add/remove/lookup isolate items in a collection
+- maps : key/value pairs
+
+NOTE:
+	- Collection interface is a group of objects with duplicates allowed
+	- Set extends Collection but forbids duplicates
+	- List extends Collection and allows duplicates, or positional indexing
+	- Map extends neither Set or List or Collection
+	
+Set Interface
+- Set is a collection that cannot contain duplicate elements
+- Set interface extends Collection 
+- contain only methods inherited from Collection
+- two Set objects are equal if they contain the same elements
+	- Intersection - two set values that contain the same elements
+	- Union - combining two sets to create a new set of all the unique data elements
+ 
+ Java Lists
+ - List is an ordered Collections, aka sequence
+ - can contain duplicates
+ - contains List specific operations
+ 	- Positional access
+ 	- search
+ 	- List Iteration
+ 	- Range-view
+ 	
+ Java Maps
+ - accessing Map elements
+ - Map does not inherit from Collection
+ - Map interface provides for storing and accessing both key/value objects
+ 
+ Iterator
+ - an object that implements the Iterator interface generates a series of elements, one at a time
+ 	- hasNext()
+ 	- next()
+ 	- remove()
+ 
+ ListIterator
+ - interface extends Iterator
+ - forward/reverse directions are possible
+ 
+ Implementation Classes
+ 	- Set
+ 		- HashSet
+ 		- TreeSet
+	- List
+		- ArrayList
+		- LinkedList
+	- Map 
+		- HashMap
+		- TreeMap
+		
+Questions: Choosing an Implementation
+- Fast random access by key	: Map
+- Access data by key with frequent need to traverse the set of keys in order : Map
+- No duplicates allowed : Set
+- Frequent need to report sorted individual data elements : List
+- Duplicates allowed, need to access data by position, new elements usually added to the end : Array
+- Duplicates allowed, usual need is to traverse the collection in order : Sorted ArrayList
+
+up to slide 30
+
+	
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
