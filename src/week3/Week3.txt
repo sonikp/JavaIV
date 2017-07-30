@@ -122,7 +122,28 @@ Questions: Choosing an Implementation
 - Duplicates allowed, need to access data by position, new elements usually added to the end : Array
 - Duplicates allowed, usual need is to traverse the collection in order : Sorted ArrayList
 
-up to slide 30
+Example:: UniqueWords.java
+
+ 	 	
+User Objects:
+- Collections framework will work with any Java class
+	- equals()
+	- hashCode()
+	- compareTo()
+	
+
+equals()
+	- natural ordering
+compareTo()
+	- natural comparison
+
+e.g: (e1.compareTo((Object)e2) == 0)
+		has the same boolean value as:
+	(e1.equals((Object)e2)
+	
+hashCode()
+
+
 
 	
  

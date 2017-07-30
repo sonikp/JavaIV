@@ -15,6 +15,7 @@ import java.util.TreeSet;
 public class UniqueWordsTyped {
 	public static void main(String[] args) {
 		
+		
 		// Usage check and open file
 		if ( args.length != 1 ) {
 			System.err.println( "Usage: java UniqueWords word-file " );
