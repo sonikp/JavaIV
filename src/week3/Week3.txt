@@ -141,7 +141,25 @@ e.g: (e1.compareTo((Object)e2) == 0)
 		has the same boolean value as:
 	(e1.equals((Object)e2)
 	
+Example: Name.java
+
+when returns:
+- negative if o1 < o2
+- zero if o1 = o2
+- positive if o1 > o2
+	
 hashCode()
+
+===Generics===
+
+Catch errors at compile time
+Makes code more readable
+- List<Policy>
+- Map<SocSecNo, Policy>
+- Map<ClaimNo, LinkedList<Policy>
+Easy migrations between raw collections and generic collections
+
+
 
 
 
