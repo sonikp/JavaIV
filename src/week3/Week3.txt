@@ -1,3 +1,5 @@
+https://github.com/patniemeyer/learningjava
+
 Week 3. 
 
 Lecture 3a: Generics, Collections, Javadoc
@@ -162,9 +164,195 @@ Easy migrations between raw collections and generic collections
 
 
 
+   Lecture 3b: Streams and File I/O, Object Serialization, NIO
+   Learning Java: Chapter 12
+   Effective Java: chapter 11
+   
+   
+Chapter 12 ip/op facilities
+
+Differences in two types:
+- Streams: oriented around bytes and characters 
+	- one way serial connection betwrrn a data user and a data provider
+	- basic purpose is input/output & filtering/processing
+	- byte streams, typically used to read/write binary data = images/sounds
+
+
+- Channels: oriented around buffers containing those data types
+
+
+Definitions:
+
+- InputStream, OutputStream
+	- abstract class defines the basic functionality for treading or writing to an unstructured sequence of bytes
+
+- reader/writer
+	- abstract class defines the basic functionality for reading / writing a sequence of character data
+	
+- InputStreamReader/OutputStreamWriter
+	- class that bridges byte and character streams by converting according to a specific character encoding scheme
+	
+- DataInputStream/DataOutputStream
+	- specialized stream filters that add the ability to read/write multibyte data types such as primitives and String objects in a universal format
+
+- ObjectInputStream/ObjectOutputStream
+	- specialized stream filters that are capable of writing whole groups of serialized Java objects and reconstructing them
+
+- BufferedInputStream/BufferedOutputStream/BufferedReader/BufferedWriter
+	- specialized stream filters that add buffering for additional efficiency. For real-world I/O a buffer is almost always used
+	
+- PrintStream/PrintWriter
+	- Specialized streams that simplify printing text
+	
+- PipedInputStream/PipedOutputStream/PipedReader/PipedWriter
+	- "loopback" streamd that can be used in pairs to move data within an application
+	
+- FileInputStream/FileOutputStream/FileReader/FileWriter
+
+write() 	==> OutputStream
+read()		==> InputStream
+
+Reader & Writer deal with character
+InputStream/OutputStream deal with bytes
+	- Readers/Writers correctly handle unicode characters, which is not always the case with byte streams
+
+java.lang.System class
+
+InputStream stdin = System.in;
+OutputStream stdout = System.out;
+OutputStream stderr	= System.err;
+
+close()	=> method shuts down the stream and frees up any associated system resources
+
+java.io.Console API through System.console(), uses the console to read passwords without echoing them to the screen
+
+
+---Character Streams----
+java.io Reader / Writer character stream classes were introduced as streams that handle character data only
+InputStreamReader/InputStreamWriter bridges the gap between the world of character streams and the world of byte streams
+- a Reader/Writer that can be wrapped around any underlying byte stream to make it a character stream
+
+----Stream Wrappers---
+
+Constructing a BufferedInputStream:
+
+	InputStream bufferedIn = new BufferedInputStream(System.in);
+	
+BufferedInputStream is a type of stream that reads ahead and buffers a certain amount of data
+
+"getResourceAsStream"
+
+----File I/O-----
+- Represents a file on the native filesystem
+- StreamTokenizer: breaks the contents of a stream into tokens
+	- StreamTokenizer object can be used to parse any text file
+
+java.io.File
+
+
+	BufferedReader inputFile = new BufferedReader(new FileReader(inFileName));
+	PrintWriter outputFile = new PrintWriter(new BufferedWriter(new FileWriter(outFileName)));
+	
+	To open a text file for output, connect a text file to a stream for writing
+	
+	PrintWriter outputStream = new PrintWriter(new FileOutputStream("out.txt");
+	=OR=
+	FileOutputStream s = new FileOutputStream("out.ext");
+	PrintWriter outputStream = new PrintWriter(s);
+	
+	Memory ==> PrintWriter ==> FileOutputStream ==> Disk
+				smileyOutStream						smiley.txt
+	
+	PrintWriter smileyOutStream = new PrintWriter(new FileOutputStream("smiley.txt");
+
+
+	File fooFile = new File("/tmp/foo.txt");
+	File barDir =  new File("/tmp/bar");
+	
+	add/append to a file instead of replacing it:
+	
+	outputStream = new PrintWriter(new FileOutputStream("demo_out.txt", true);	// true = append to the end of the file if it exists
+	
+close()
+
+	- an output file should be closed when done writing to it
+	- an input file should be closed when done reading from it
+	- a file opened for writing must be closed before reading from it
+	example;
+		outputStream.close();
+	
+	Memory	<==		BufferedReader	<==		FileReader		<== Disk
+					smileyInStream								smiley.txt
+					
+	BufferedReader smileyInStream = new BufferedReader(new FileReader("smiley.txt");
+	
+	To open a text file for input, connect a text file to a stream from reading:
+	
+	BufferedReader smileyInStream = new BufferedReader(new FileReader("smiley.txt");
+	=OR=
+	FileReader s = new FileReader("smiley.txt");
+	BufferedReader smileyInStream = new BufferedReader(s);
+	
+	Methods for BufferedReader
+	- readLine: read a line into a String
+	- read: read a char at a time
+	- close: close BufferedReader stream
+	
+	
+	*******Up to slide 41:
+	
+RandomAccessFile class
+	- implements both DataInput/DataOutput interfaces
+	- is convenient, by accessing any data within a file. Can be accompanied by an "index", tells address of each record
+	- e.g: 	tape == stream
+			CD == Random-Access
+
+	
+---Serialization------
+Using DataOutputStream you can write an application that saves the data context of you objects one at a time as simple types
+
+Object serialization is the simplest way to automatically save and load the state of an object.
+Basically an instance of any class that implements the Serializable interface can be saved to and restored from a stream
+The stream subclasses ObjectInputStream/ObjectOutputStream are used to serialize primitive types and objects
+
+Example
+
+package java.io;
+
+public interface Serializable {
+
+}
+
+public class MySerializableClass implements Serializable {
+...
+}
+
+The serialization of instances of this class are handled by the defaultWriteObject() of the ObjectOutputStream
+
+
+
 
 	
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
