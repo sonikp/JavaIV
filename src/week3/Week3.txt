@@ -243,6 +243,7 @@ BufferedInputStream is a type of stream that reads ahead and buffers a certain a
 "getResourceAsStream"
 
 ----File I/O-----
+- acts like a wrapper class for filenames
 - Represents a file on the native filesystem
 - StreamTokenizer: breaks the contents of a stream into tokens
 	- StreamTokenizer object can be used to parse any text file
@@ -299,7 +300,10 @@ close()
 	- close: close BufferedReader stream
 	
 	
-	*******Up to slide 41:
+StringTokenizer:
+	- used to parse a line into words
+	- can specify delimiters
+	
 	
 RandomAccessFile class
 	- implements both DataInput/DataOutput interfaces
