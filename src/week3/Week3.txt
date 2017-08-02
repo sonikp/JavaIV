@@ -333,7 +333,84 @@ public class MySerializableClass implements Serializable {
 
 The serialization of instances of this class are handled by the defaultWriteObject() of the ObjectOutputStream
 
+===NIO===
 
+java.nio;
+
+stream-oriented
+- one byte at a time
+- easy to create filters for streamed data
+- relatively simply to chain filters together
+- relatively slow
+
+block-oriented
+- data in blocks
+- can be much faster the  processing it by the (streamed) byte
+- lacks some of the elegance and simplicity of stream-oriented I/O
+
+Channels and buffers are the central objects to NIO
+- channels are analogous to streams in the original I/O package
+	- all data must pass through a channel object
+- buffer is essentially a container object
+	- all data that is sent to a channel must fist be placed in a buffer, likewise, and data that is read from a channel is read into a buffer
+	- a buffer is an object, which holds some data, that is to be written to or that has just been read from.
+	- more than just an array
+	- provides structured access to data
+	- keeps track of the system's read/write processes
+
+Kinds of Buffers
+- most common is the byte buffer, allows get/set operations
+- a buffer type for each of the primitive Java types:
+	- ByteBuffer
+	- CharBuffer
+	- ShortBuffer
+	- IntBuffer
+	- LongBuffer
+	- FloatBuffer
+	- DoubleBuffer
+	
+What is a channel?
+- an object from which you can read/write data
+	- like a stream
+	- never write a byte directly to a channel
+	- write to a buffer
+	- don't read directly from a channel
+	- read from a channel into a buffer
+	- get the bytes from the buffer
+	- channels are bi-directional
+		- streams only go in one direction, (a stream must be a subclass of either InputStream or OutputStream
+		- a channel can be opened for reading, writing or both
+		
+Reading from file: 3 steps:
+- 1. getting the Channel from FileInputStream
+- 2. creating the Buffer; and
+- 3. reading from the Channel into the Buffer
+
+ Resetting the buffer
+ - call the clear() method before read into a buffer from the input channel
+ - call the flip() method before write a buffer to the output channel
+ - the clear() method resets the buffer, making it ready to have data read into it.
+ - the flip() method prepares the buffer to have the newly-read data written to another channel.
+ 
+ Buffer State Variables;
+ - the limit can never be larger than the capacity
+ 
+ Accessor Methods
+ - accessing data directly in the buffer
+ 	- using the get() and put() methods for the ByteBuffer class
+ 
+ The get() methods
+ 	- In the ByteBuffer class, there are 4 get() methods:
+ 	- 1. byte get();
+ 	- 2. ByteBuffer get(byte dst[]);
+ 	- 3. ByteBuffer get(byte dst[], int offset, int length);
+ 	- 4. byte get(int index); 
+
+Should I stop using java.io?
+- nope
+- java.nio is not a replacement for java.io
+- NIO addresses different needs
+- java.io is not going away
 
 
 	
