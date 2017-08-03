@@ -1,0 +1,8 @@
+Here is an example to read a file with Java nio which is Java’s new IO i.e. nio package. There are many new concepts in this nio package. To start with Java nio Tutorial, we are starting with basic thing of file io that is reading a file. It reads a file line from a given location. We are going to use following nio classes to achieve our goal in this Java nio file read example.
+
+com.nio.file.Files – It exposes many static methods required to operate on files, directories, etc. We are going use this class to create data stream of the file and create a BufferedReader to read a line in this file.
+
+com.nio.file.Path – In simple terms it represents a file object on file system.
+
+com.nio.file.Paths – It exposes static methods to return Path object by taking String and URI format path.
+

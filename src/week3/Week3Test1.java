@@ -3,11 +3,15 @@ package week3;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Week3Test1<T> {
+public class Week3Test1<T> implements Comparable {
 	
 	private T t;
 	public static <T> boolean isEqual(Week3Test1<T> g1, Week3Test1<T> g2) {
 		return g1.get().equals(g2.get());
+	}
+	
+	public static <T extends Comparable<T>> int compare(T t1, T t2) {
+		return t1.compareTo(t2);
 	}
 	
 	public T get() {
@@ -18,9 +22,7 @@ public class Week3Test1<T> {
 		this.t = t1;
 	}
 	
-	public interface Comparable<T> {
-		public int compareTo(T o);
-	}
+
 	
 	public static void main(String[] args) {
 		
@@ -33,6 +35,8 @@ public class Week3Test1<T> {
 		
 		boolean isEqual = Week3Test1.<String>isEqual(g1, g2);
 		System.out.println("is equal: " + Week3Test1.<String>isEqual(g1, g2));
+		System.out.println("is equal: " + Week3Test1.isEqual(g1, g2));
+//		System.out.println("is equal: " + Week3Test1.compareTo(g1, g2));
 		
 		
 		tg1.set("Pankaj");
@@ -50,5 +54,13 @@ public class Week3Test1<T> {
 		
 	}
 
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
+
+	
 }
+
