@@ -37,16 +37,17 @@ public class NIOAsynchronousFileWriterExample {
                 }
             };
             System.out.println("Thread: "+Thread.currentThread().getName()+" Before write call");
-            asynchFileChannel.write(ByteBuffer
-                    .wrap("I am writing using Asynchronous NIO.".getBytes()),
-                    0, "File Write", handler);
+            asynchFileChannel.write(ByteBuffer.wrap("I am writing using Asynchronous NIO.".getBytes()), 0, "File Write", handler);
             System.out.println("Thread: "+Thread.currentThread().getName()+" After write call");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
+        } 
+        catch (IOException ex) {
+            ex.printStackTrace();
+        } 
+        finally {
             try {
                 asynchFileChannel.close();
-            } catch (IOException ioe) {
+            } 
+            catch (IOException ioe) {
                 ioe.printStackTrace();
             }
         }
