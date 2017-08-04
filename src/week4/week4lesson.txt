@@ -1,0 +1,102 @@
+Taken from Dietel Book
+
+Concurrency:
+
+Slide5:--------------
+Use existing classes
+- synchronized
+
+Slide 10:-----------
+Thread states
+
+A new thread begins its life cycle in the new state.
+Remains there until started, which places it in the runnable state—considered to be executing its task.
+
+
+All the states up to the terminated state
+
+Slide 17:---------
+Slide 18:-------------
+Thread priorities and thread scheduling
+
+Slide 20:------------
+Indefinite postponement and Deadlock
+
+Slide 21:--------
+Deadlock, multiple threads waiting on each other
+
+Slide 24;----
+
+Runnable object represents a task
+
+
+Slide 26:-----------
+
+Example PrintTask.java
+
+**** recommended to use executor(), but the book doesn't explain why.
+
+
+Example from the original slides
+ThreadExs.java
+
+
+
+Slide 34:--------
+Thread Synchronizaton
+
+Slide 35:---
+Immutable Data
+
+Slide 37:-------------
+Monitors
+: performs synchronizaton
+
+both synchronized objects and methods
+
+
+***Design Patterns could be a good class to take next****
+
+Example 23.5 SimpleArray.java
+
+
+Another Example
+ArrayWriter.java, implements runnable
+
+
+
+Slide 50:---------
+SimpleArray.java
+
+Slide 54:------
+Now SiimpleArray.java is synchronized
+
+
+Slide 58:------
+Producer/Consumer relationship
+
+Example: Buffer.java Fig 23.9
+
+Slide 76:-----------
+shows ArrayBlockingQueue
+
+Slide 88:-----------
+does stuff
+
+Slide 132:---------
+Concurrent Collections
+
+*****Learn HashMaps***
+
+Slide 135:--------
+Multithreading with GUI
+
+Slide 173: ------
+Example for timing and speed of testing methods
+
+
+
+
+
+
+
