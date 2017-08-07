@@ -1,0 +1,134 @@
+Lecture 4a: Concurrent programming, basic threads
+   Learning Java: Chapter 9
+   Effective Java: Chapter 10
+
+Lecture 4b: Advanced Thread programming, JSE Concurrency uUtilities
+   Learning Java: Chapter 9
+   Effective Java:
+
+Concurrency: notes from jhtp10_ch23.ppt
+
+- Java makes concurrency available through the API's
+- you specify that an application contains separate threads of execution
+	- each thread has its own method-call stack and program counter
+	- can execute concurrently wirh other threads while sharing application-wide resources such as memory and file handles
+	- Guidelines
+		- use existing collection classes and interfaces that manage synchronization
+		- use synchronized keyword:
+			- object methods wait(), notify() and notifyAll()
+			- advanced features Locks and Conditions
+
+New and Runnable stated
+	- new thread begins its lifecycle in the 'new state'
+	- remains there until start, which places it in the runnable state, considered to be executing its task
+
+States:
+
+	- new
+		- runnable
+			- waiting	:: notify, notifyAll, wait
+			- timed waiting :: wait/sleep, interval expires, notify, notifyAll 
+			- terminated :: task completes
+			- blocked :: enter synchronized statement, issue I/O request, aquire lock interrupt, I/O completes
+			
+States Explained:
+- new:
+	- new thread begins lifecycle in the new state
+	- remains there until started, which places it in the runnable stated, considered to be executing a task
+- waiting:
+	- runnable thread can transition to the waiting state, waiting for another thread to perform a task
+	- transitions back to runnable state only when another thread notifies it to contine executing
+- Timed Waiting State
+	- runnable thread can enter the timed waiting state for specified interval of time
+		- transitions back to runnable state when that time iterval expires or when the event its waiting for occurs
+		- can't use a processor, even it one is available
+	- Sleeping thread remains in the timed waiting state for designated period of time, after returning to runnable state
+- Blocked State
+	- runnable thread transitions to the blocked state when it attempts to perform a task that can't
+		be completed immediately and it must temporarily wait until that task completes
+- Terminated State
+	- runnable thread enters the terminated state when it successfully completes its task or otherwise terminates, (perhaps due to error)
+	
+Operating System View of the Runnable State; there are typically two separate states:
+- 1. when thread first transitions to the runnable state from the new state it is in the 'ready' state
+- 2. a 'ready' thread enters the 'running' state, when OS assigns it a processor, known as 'dispatching the thread'
+	- each thread is given a quantum or timeslice in which to perform its task
+	- the process an OS uses to determine which thread to dispatch is called 'thread scheduling'
+
+Thread Priorities and Thread Scheduling
+- DO NOT explicitely create and use Thread objects to implement concurreny
+- RATHER use the 'Executor' interface
+- most OS's support timeslicing which enables threads of equal priority to share a processor
+- an OS's thread scheduler determines which thread runs next
+- thread-scheduler implementation keeps the highest-priority thread running at all times, 
+	if theres more than one high priority thread, ensure all threads execute in a 'round robin' fashion
+	
+Indefinite Postponement and Deadlock
+- preemptive scheduling: when a higher-priority thread enters the ready state, the OS preempts the currently running thread
+- a steady influx of higher-priority threads could postpone the execution of lower-priority threads
+- called 'Indefinate postponement' aka starvation
+- OS's employ a technique called 'aging' to prevent starvation
+- could also occur with a 'deadlock'
+	occurs when a thread may be waiting on another to complete, and that never completes
+	
+Creating and Executing Threads with the 'Executor' Framework
+- a runnable object represents a "task" that can execute concurrenty with other tasks
+- the 'runnable' interface declares the single method run() which cntians the code that defines the task a 'runnable' object should perform
+- creates and manages a group ot threads called a thread pool to execute Runnables
+- Executor method 'execute' accepts a Runnable as an argument
+- Executor assigns every 'runnable' passed to its execute method to ont of the available threads in the thread pool
+- if there are no threads available, the executor creates a new thread or waits for a thread to become available
+- ExecutorService interface extends Executor and declares methods
+- an objects that implements this interface can be created using 'static' methods declared in the class Executors
+- Executor method newCacheThreadPool returns an ExecutorService that creates new threads as they're needed by the application
+- ExecutorService method 'shutdown' notifies the ExecutorService to stop accepting new tasks but continues to complete the tasks that have already been submitted
+
+Thread Synchronization
+- when multiple threds share an object, can result in issues
+- problem solved by giving only one thread at a time exclusive access to the object
+- process called thread synchronization
+- ensures that each thrad accessing a share object excludes all other threads from doing so simultaneously - called mutual exclusion
+
+Immutable Data
+- thread synchronization is only necessary for shared mutable data that may change during its lifetime
+- shared objects with immutable data will not cause errors
+- when sharing immutable data across threads, declare the data fields 'final'
+- labeling object references as final indicates that the reference will not change
+
+Monitors
+- common way to perform synchronization is to use Java's built in 'monitors'
+	- every object has a monitor lock
+	- can be held my a maximum of one thread at a time
+	- thread must aquire the lock before proceeding with the operation
+	- other threads attempting to perform an operation that requires the same lock will be blocked
+	- implemented with the 'synchronized' keyword
+
+Example: SimpleArray
+
+Producer/Consumer Relationship - ArrayBlockingQueue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
