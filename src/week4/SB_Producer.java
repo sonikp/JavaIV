@@ -22,8 +22,7 @@ public class SB_Producer implements Runnable {
 		for (int count = 1; count <= 10; count++) {
 			// sleep 0 to 3 seconds, then place value in Buffer
 			try {
-				int randomSleep = generator.nextInt(3000);
-				Thread.sleep(randomSleep);
+				Thread.sleep(generator.nextInt(3000));
 				sharedLocation.blockingPut(count);
 				sum += count;	// increment sum of values
 				System.out.printf("\t%2d%n", sum);
