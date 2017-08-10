@@ -20,6 +20,26 @@ public class PrimeCalculator extends SwingWorker<Integer, Integer> {
 	private final JLabel statusJLabel;		//display status of calculation
 	private final boolean[] primes;			// boolean array for finding primes
 	
+	public PrimeCalculator(int max, JTextArea imtermediateJTextArea, JLabel statusJLabel, JButton getPrimesJButton, JButton cancelJButton) {
+		this.imtermediateJTextArea = imtermediateJTextArea;
+		this.statusJLabel = statusJLabel;
+		this.getPrimesJButton = getPrimesJButton;
+		this.cancelJButton = cancelJButton;
+		primes = new boolean[max];
+		Arrays.fill(primes, true);	// initialize all primes elements to true
+	} // end constructor
+	
+	// find all primes up to max using ths Sieve of Eratosthenes
+	public Integer doInBackground() {
+		
+		int count = 0;	// the number of primes found
+		
+		// starting at the third value, cycle through the array and pull false as the value of any greater number that is a multiple 
+		
+		
+	}	// end method doInBackground
+	
+	
 }
 
 
