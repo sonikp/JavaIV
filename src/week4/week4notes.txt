@@ -2,7 +2,7 @@ Lecture 4a: Concurrent programming, basic threads
    Learning Java: Chapter 9
    Effective Java: Chapter 10
 
-Lecture 4b: Advanced Thread programming, JSE Concurrency uUtilities
+Lecture 4b: Advanced Thread programming, JSE Concurrency Utilities
    Learning Java: Chapter 9
    Effective Java:
 
