@@ -1,0 +1,30 @@
+
+
+NETWORKING
+
+java.net
+
+- stream-based communication = view networking as as streams of data
+- packet-based communication = transmitting individual packets of information
+
+- client/server  relationship
+
+- socket based communication = enables apps to biew networking as if it were file I/O
+	- stream sockets = (TCP) a process establishes a connection to another process, then data flows in a continual stream
+	- datagram sockets = (UDP) individual packets of info are transmitted
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
