@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-public class Server extends JFrame {
+public class StreamChatServer extends JFrame {
 	
 	private JTextField enterField;	// inputs message from user
 	private JTextArea displayArea;
@@ -28,7 +28,7 @@ public class Server extends JFrame {
 	private int counter = 1;
 	
 	// constructor :: set up GUI
-	public Server() {
+	public StreamChatServer() {
 		
 		super("Server");
 		
@@ -96,7 +96,7 @@ public class Server extends JFrame {
 		
 		// set-up output stream for objects
 		output = new ObjectOutputStream(connection.getOutputStream());
-		output.flush(); 	// flust output buffer to send header info
+		output.flush(); 	// flush output buffer to send header info
 		
 		// set-up input stream for object
 		input = new ObjectInputStream(connection.getInputStream());

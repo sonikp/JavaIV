@@ -1,0 +1,14 @@
+package week5;
+
+import javax.swing.JFrame;
+
+public class StreamChatServerTest {
+	
+	public static void main(String[] args) {
+		
+		StreamChatServer application = new StreamChatServer();
+		application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		application.runServer();
+		
+	}
+}

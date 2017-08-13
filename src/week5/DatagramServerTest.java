@@ -2,12 +2,12 @@ package week5;
 
 import javax.swing.JFrame;
 
-public class ServerTest {
+public class DatagramServerTest {
 	
 	public static void main(String[] args) {
 		
-		Server application = new Server();
+		DatagramServer application = new DatagramServer();
 		application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		application.runServer();
+		application.waitForPackets();
 	}
 }

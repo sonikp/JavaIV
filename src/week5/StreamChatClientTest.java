@@ -2,18 +2,18 @@ package week5;
 
 import javax.swing.JFrame;
 
-public class ClientTest {
+public class StreamChatClientTest {
 	
 	public static void main(String[] args) {
 		
-		Client application;
+		StreamChatClient application;
 		
 		// if no command line args
 		if (args.length == 0 ) {
-			application = new Client("127.0.0.1");	// connection to localhost
+			application = new StreamChatClient("127.0.0.1");	// connection to localhost
 		}
 		else {
-			application = new Client(args[0]);
+			application = new StreamChatClient(args[0]);
 		}
 		
 		application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

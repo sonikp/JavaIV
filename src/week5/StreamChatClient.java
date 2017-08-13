@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-public class Client extends JFrame {
+public class StreamChatClient extends JFrame {
 	
 	private JTextField enterField;		
 	private JTextArea displayArea;
@@ -26,7 +26,7 @@ public class Client extends JFrame {
 	private Socket client;
 	
 	// constructor:: initialize chatServer and set up GUI
-	public Client(String host) {
+	public StreamChatClient(String host) {
 		
 		super("Client");
 		
