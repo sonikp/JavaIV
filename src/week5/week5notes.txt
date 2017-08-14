@@ -1,4 +1,9 @@
 
+All Deitel code examples:
+https://cs.fit.edu/~mmahoney/cis5100/examples/
+
+
+
 
 NETWORKING
 
