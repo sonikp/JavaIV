@@ -1,0 +1,70 @@
+RMI - Remote Method Invocation
+JNI - Java Native Interface
+
++ Log4J later on
+
+
+
+Distributed Objects
+
+RIM - Framework
+
+- includes multi-client server socket thread
+
+
+Examples:
+http://www.ejbtutorial.com/java-rmi/a-step-by-step-implementation-tutorial-for-java-rmi
+https://edwin.baculsoft.com/2012/01/a-simple-java-rmi-tutorial/
+
+
+Slide 9: learning java book has examples to review
+
+NEW SLIDES
+Anonymous classes and Lamda expressions
+
+
+======Log4j================
+
+
+download the bin file
+ create a /lib foldr
+ add the .jar files to the /lib folder
+ 
+grab these two files:
+log4j-core-2.3.jar
+log4j-api-2.3.jar
+
+import these libraries into your 
+
+create a properties file: log4j2.properties in the root folder /src
+
+change log level = debug
+
+
+Example:
+https://www.mkyong.com/logging/log4j-hello-world-example/		<= this is for log4j version 1
+
+http://andrew-flower.com/blog/Basic_Log4j2_Configuration		<= log4j2
+
+https://dzone.com/articles/log4j-2-configuration-using-properties-file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
