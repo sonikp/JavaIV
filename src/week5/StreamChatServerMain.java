@@ -2,7 +2,7 @@ package week5;
 
 import javax.swing.JFrame;
 
-public class StreamChatServerTest {
+public class StreamChatServerMain {
 	
 	public static void main(String[] args) {
 		

@@ -1,5 +1,7 @@
 package ass3;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -10,14 +12,21 @@ import java.util.concurrent.Executors;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class ServerSideTest extends JFrame {
 	
+	
 	private JButton serverStart;
 
-	// constructor
 	public ServerSideTest() {
-		super("ServerSideTest");
+		super("Knock-Knock Server Side");
+		
+		
+		setLayout(new GridLayout(2, 1, 10, 10));
 		
 		serverStart = new JButton("SERVER = Start");
 		serverStart.addActionListener(new ActionListener() {
@@ -25,70 +34,57 @@ public class ServerSideTest extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent startSvr) {
 				
+				// https://stackoverflow.com/questions/15541804/creating-the-serversocket-in-a-separate-thread
 				System.out.println("server START button clicked");
-				startServer();
-	
+
+				startServerJFrame();
 				
+				
+				/*
+				 
+				terminates listening port
+	
+				fuser -k 8008/tcp
+				
+				*/
 				
 				
 			}
 		});
+		
 		add(serverStart);
+
+
+
+		
 		setSize(400, 300);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocation(1500, 100);
+
+	}	// end constructor
+	
+	
+	
+	public void startServerJFrame() {
+		System.out.println("serverStart()");
+    	JFrame serverApp = new JFrame("this is the SERVER");
+    	JTextArea serverDisplayArea = new JTextArea();
+    	serverDisplayArea.setEditable(false);
+
+    	serverApp.add(serverDisplayArea, BorderLayout.CENTER );
+    	serverDisplayArea.setText( "Server awaiting connections.....\n" );
+    	
+    	
+    	serverApp.setSize(400, 300);
+    	serverApp.setVisible(true);
+    	serverApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	serverApp.setLocation(1500, 400);
 	}
 	
 	public static void main(String[] args) {
-        new ServerSideTest();
-
-    }
-
-    public void startServer() {
-        final ExecutorService clientProcessingPool = Executors.newFixedThreadPool(10);
-
-        Runnable serverTask = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    ServerSocket serverSocket = new ServerSocket(8000);
-                    System.out.println("Waiting for clients to connect...");
-                    while (true) {
-                        Socket clientSocket = serverSocket.accept();
-                        clientProcessingPool.submit(new ClientTask(clientSocket));
-                    }
-                } catch (IOException e) {
-                    System.err.println("Unable to process client request");
-                    e.printStackTrace();
-                }
-            }
-        };
-        Thread serverThread = new Thread(serverTask);
-        serverThread.start();
-
-    }
-
-    private class ClientTask implements Runnable {
-        private final Socket clientSocket;
-
-        private ClientTask(Socket clientSocket) {
-            this.clientSocket = clientSocket;
-        }
-
-        @Override
-        public void run() {
-            System.out.println("Got a client !");
-
-            // Do whatever required to process the client's request
-
-            try {
-                clientSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
+		
+		ServerSideTest app = new ServerSideTest();
+		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		app.setLocation(1500, 100);
+	}
 }
 	

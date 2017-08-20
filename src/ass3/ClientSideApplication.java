@@ -5,15 +5,22 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class client {
+public class ClientSideApplication extends JFrame {
 	 /**
      * Runs the client as an application.  First it displays a dialog
      * box asking for the IP address or hostname of a host running
      * the date server, then connects to it and displays the date that
      * it serves.
      */
+	
+	
+	public ClientSideApplication() {
+		super("Client");
+	}
+	
     public static void main(String[] args) throws IOException {
         /*
     	String serverAddress = JOptionPane.showInputDialog(
