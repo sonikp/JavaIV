@@ -10,7 +10,7 @@ public class ServerSideMain {
 		
 		ServerSideApplication application = new ServerSideApplication();
 		application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		application.setLocationRelativeTo(null);
+		application.setLocation(1500, 100);
 		
 	}
 }
