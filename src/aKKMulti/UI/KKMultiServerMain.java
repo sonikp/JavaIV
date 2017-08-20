@@ -2,7 +2,7 @@ package aKKMulti.UI;
 import java.io.IOException;
 import java.net.ServerSocket;
 
-public class KKMultiServer {
+public class KKMultiServerMain {
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = null;
         boolean listening = true;

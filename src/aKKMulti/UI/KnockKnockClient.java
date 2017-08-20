@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
@@ -43,6 +44,10 @@ public class KnockKnockClient extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("entered action performed");
+				sendData(e.getActionCommand());
+				enterField.setText("");
+				/*
 				// TODO Auto-generated method stub
 				try {
 					connectToServer();
@@ -50,6 +55,7 @@ public class KnockKnockClient extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				*/
 				
 			}
 		});
@@ -64,8 +70,27 @@ public class KnockKnockClient extends JFrame {
 		setLocation(1500,100);
 	}
 	
+	// connect to server and process messages from server
+		public void runClient() throws ClassNotFoundException {
+			System.out.println("runClient()");
+			try {
+				connectToServer();
+				getStreams();
+				processConnection();
+			}
+			catch (EOFException eofEx) {
+				displayMessage("\nClient Terminated connection");
+			}
+			catch (IOException ioEx) {
+				ioEx.printStackTrace();
+			}
+			finally {
+				closeConnection();	// 
+			}
+		}
+	
 	public void connectToServer() throws IOException {
-		
+		System.out.println("Attempting connectToServer()");
 		displayMessage("Attempting connection\n");
 
 		// create socket to make connection to server
@@ -77,7 +102,7 @@ public class KnockKnockClient extends JFrame {
 			
 			
 		} catch (UnknownHostException e) {
-			System.err.println("Don't know about host: taranis.");
+			System.err.println("Don't know about host: localhost.");
 			System.exit(1);
 		} catch (IOException e) {
 			System.err.println("Couldn't get I/O for the connection to: localhost.");
