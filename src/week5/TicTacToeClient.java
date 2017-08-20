@@ -40,7 +40,8 @@ public class TicTacToeClient extends JFrame implements Runnable
    // set up user-interface and board
    public TicTacToeClient( String host )
    { 
-      ticTacToeHost = host; // set name of server
+      super("Tic-Tac-Toe Client");
+	  ticTacToeHost = host; // set name of server
       displayArea = new JTextArea( 4, 30 ); // set up JTextArea
       displayArea.setEditable( false );
       add( new JScrollPane( displayArea ), BorderLayout.SOUTH );

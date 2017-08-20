@@ -22,7 +22,7 @@ import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
 
-public class TicTacToeClient_SELF extends JFrame implements Runnable {
+public class zTBD_TicTacToeClient_SELF extends JFrame implements Runnable {
 	
 	
 	private JTextField idField;	// textfield to display player's mark
@@ -41,7 +41,7 @@ public class TicTacToeClient_SELF extends JFrame implements Runnable {
 	private final String O_MARK = "O";
 	
 	// constructor:: set-up user-interface and board
-	public TicTacToeClient_SELF(String host) {
+	public zTBD_TicTacToeClient_SELF(String host) {
 		
 		ticTacToeHost = host;
 		displayArea = new JTextArea(4, 30); // set-up JTextArea

@@ -34,7 +34,7 @@ public class DatagramServer extends JFrame {
 			socketException.printStackTrace();
 			System.exit(1);
 		}
-		
+		System.out.println("end constructor");
 	}	// end constructor
 	
 	// wait for packets to arrive, display data and echo packet to client

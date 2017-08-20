@@ -47,6 +47,11 @@ Requirements:
 10. make other changes to improve the "OO-ness" of the app
 
 
+Research Notes:
+http://cs.lmu.edu/~ray/notes/javanetexamples/
+
+
+
 
 
 

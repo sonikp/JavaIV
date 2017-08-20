@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
-public class TicTacToeServer_SELF extends JFrame {
+public class zTBD_TicTacToeServer_SELF extends JFrame {
 	
 	private String[] board = new String[9];
 	private JTextArea outputArea;
@@ -31,7 +31,7 @@ public class TicTacToeServer_SELF extends JFrame {
 	private Condition otherPlayerTurn;
 	
 	// constructor: set up tic-tac-toe server and GUI that displays messages
-	public TicTacToeServer_SELF() {
+	public zTBD_TicTacToeServer_SELF() {
 		
 		super("Tic-Tac-Toe Server");
 		

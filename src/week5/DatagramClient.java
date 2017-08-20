@@ -29,7 +29,7 @@ public class DatagramClient extends JFrame {
 			
 			@Override	// create and send packet
 			public void actionPerformed(ActionEvent e) {
-				
+						
 				try {
 					// get message from textfield
 					String message = e.getActionCommand();
@@ -43,6 +43,7 @@ public class DatagramClient extends JFrame {
 					socket.send(sendPacket);
 					displayArea.append("Packet sent....\n");
 					displayArea.setCaretPosition(displayArea.getText().length());
+					enterField.setText("");
 				}
 				catch (IOException ioEx) {
 					displayMessage(ioEx + "\n");

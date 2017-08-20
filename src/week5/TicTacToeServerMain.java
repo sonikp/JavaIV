@@ -2,12 +2,13 @@ package week5;
 
 import javax.swing.JFrame;
 
-public class DatagramServerTest {
+public class TicTacToeServerMain {
 	
 	public static void main(String[] args) {
 		
-		DatagramServer application = new DatagramServer();
+		TicTacToeServer application = new TicTacToeServer();
 		application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		application.waitForPackets();
+		application.setLocation(1500, 100);
+		application.execute();
 	}
 }
