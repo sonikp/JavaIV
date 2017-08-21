@@ -54,6 +54,7 @@ public class KnockKnockClient extends JFrame implements ActionListener {
 					
 					displayArea.append("\nClient: " + e.getActionCommand() + "\n"); //responseField.getText()
 					out.println(responseField.getText());
+					displayArea.append("Server: " + in.readLine() + "\n");			//fromServer = in.readLine()
 				}
 				catch (Exception ex) {
 					ex.printStackTrace();

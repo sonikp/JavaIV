@@ -36,6 +36,7 @@ public class KnockKnockProtocol {
         } else if (state == SENTKNOCKKNOCK) {
             if (theInput.equalsIgnoreCase("Who's there?")) {
                 theOutput = clues[currentJoke];
+                System.out.println("output " + theOutput);
                 state = SENTCLUE;
             } else {
                 theOutput = "You're supposed to say \"Who's there?\"! " +
