@@ -49,8 +49,18 @@ public class KnockKnockClient extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				
+				try {
+					sendResponse(responseField.getText());
+					
+					displayArea.append("\nClient: " + e.getActionCommand() + "\n"); //responseField.getText()
+					out.println(responseField.getText());
+				}
+				catch (Exception ex) {
+					ex.printStackTrace();
+				}
+				responseField.setText("");
 //				fromUser = responseField.getText();
-				fromUser = e.getActionCommand();
+//				fromUser = e.getActionCommand();
 				/*
 				try {
 					stdIn = new BufferedReader(new InputStreamReader(System.in, e.getActionCommand()));
@@ -65,10 +75,10 @@ public class KnockKnockClient extends JFrame implements ActionListener {
 					e1.printStackTrace();
 				}
 				*/
-				displayArea.append("\nClient: " + fromUser + "\n");
-    			out.println(fromUser);
-//		        out.flush();
-		        responseField.setText("");
+//				displayArea.append("\nClient: " + fromUser + "\n");
+//    			out.println(fromUser);
+////		        out.flush();
+//		        responseField.setText("");
 				
 			}
 		});
@@ -106,6 +116,19 @@ public class KnockKnockClient extends JFrame implements ActionListener {
     	
     }
     
+    public void sendResponse(String responseFeild) throws IOException {
+    	String fromUser = responseFeild;
+
+    	//        kkSocket = new Socket("127.0.0.1", 4444);
+    	//        PrintWriter out = new PrintWriter(kkSocket.getOutputStream(), true);	//getOutputStream()
+
+    	if (fromUser != null) {
+    		System.out.println("Client: " + fromUser);
+    		displayArea.append("Client: " + fromUser  + "\n");
+    		out.println(fromUser.toString());
+    	}
+    }
+    
     public void getJoke() throws IOException {
     	
     	stdIn = new BufferedReader(new InputStreamReader(System.in));
@@ -119,13 +142,13 @@ public class KnockKnockClient extends JFrame implements ActionListener {
     		}
     			
 
-    		fromUser = stdIn.readLine();
+    		fromUser = stdIn.readLine();		//stdIn
     		if (fromUser != null) {
     			System.out.println("Client: " + fromUser);
     			displayArea.append("Client: " + fromUser  + "\n");
     			out.println(fromUser);
-//    			out.flush();		// <= added by MF
     		}
+    
     	}
 
     }
