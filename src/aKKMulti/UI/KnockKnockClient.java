@@ -26,8 +26,8 @@ import javax.swing.JTextField;
 public class KnockKnockClient extends JFrame implements ActionListener {
     
 	Socket kkSocket = null;
-    PrintWriter out = null;
-    BufferedReader in = null;
+    PrintWriter writeOutput = null;
+    BufferedReader readInput = null;
     BufferedReader stdIn = null;
     String fromServer;
     String fromUser;
@@ -50,36 +50,15 @@ public class KnockKnockClient extends JFrame implements ActionListener {
 				
 				
 				try {
-					sendResponse(responseField.getText());
-					
-					displayArea.append("\nClient: " + e.getActionCommand() + "\n"); //responseField.getText()
-					out.println(responseField.getText());
-					displayArea.append("Server: " + in.readLine() + "\n");			//fromServer = in.readLine()
+					displayArea.append("Client: " + e.getActionCommand() + "\n"); 
+					writeOutput.println(responseField.getText());
+					displayArea.append("Server: " + readInput.readLine() + "\n");			
 				}
 				catch (Exception ex) {
 					ex.printStackTrace();
 				}
 				responseField.setText("");
-//				fromUser = responseField.getText();
-//				fromUser = e.getActionCommand();
-				/*
-				try {
-					stdIn = new BufferedReader(new InputStreamReader(System.in, e.getActionCommand()));
-				} catch (UnsupportedEncodingException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				try {
-					fromUser = stdIn.readLine();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				*/
-//				displayArea.append("\nClient: " + fromUser + "\n");
-//    			out.println(fromUser);
-////		        out.flush();
-//		        responseField.setText("");
+
 				
 			}
 		});
@@ -105,8 +84,8 @@ public class KnockKnockClient extends JFrame implements ActionListener {
     	
         try {
             kkSocket = new Socket("127.0.0.1", 4444);
-            out = new PrintWriter(kkSocket.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(kkSocket.getInputStream()));
+            writeOutput = new PrintWriter(kkSocket.getOutputStream(), true);
+            readInput = new BufferedReader(new InputStreamReader(kkSocket.getInputStream()));
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host: localhost.");
             System.exit(1);
@@ -117,24 +96,12 @@ public class KnockKnockClient extends JFrame implements ActionListener {
     	
     }
     
-    public void sendResponse(String responseFeild) throws IOException {
-    	String fromUser = responseFeild;
-
-    	//        kkSocket = new Socket("127.0.0.1", 4444);
-    	//        PrintWriter out = new PrintWriter(kkSocket.getOutputStream(), true);	//getOutputStream()
-
-    	if (fromUser != null) {
-    		System.out.println("Client: " + fromUser);
-    		displayArea.append("Client: " + fromUser  + "\n");
-    		out.println(fromUser.toString());
-    	}
-    }
     
     public void getJoke() throws IOException {
     	
     	stdIn = new BufferedReader(new InputStreamReader(System.in));
 
-    	while ((fromServer = in.readLine()) != null) {
+    	while ((fromServer = readInput.readLine()) != null) {
     		System.out.println("Server: " + fromServer);
     		displayArea.append("Server: " + fromServer + "\n");
     		if (fromServer.equals("Bye.")) {
@@ -143,11 +110,11 @@ public class KnockKnockClient extends JFrame implements ActionListener {
     		}
     			
 
-    		fromUser = stdIn.readLine();		//stdIn
+    		fromUser = stdIn.readLine();		
     		if (fromUser != null) {
     			System.out.println("Client: " + fromUser);
     			displayArea.append("Client: " + fromUser  + "\n");
-    			out.println(fromUser);
+    			writeOutput.println(fromUser);
     		}
     
     	}
@@ -155,8 +122,8 @@ public class KnockKnockClient extends JFrame implements ActionListener {
     }
     
     public void closeConnection() throws IOException {
-        out.close();
-        in.close();
+        writeOutput.close();
+        readInput.close();
         stdIn.close();
         kkSocket.close();
     }
