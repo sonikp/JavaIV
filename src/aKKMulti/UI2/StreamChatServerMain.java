@@ -8,7 +8,7 @@ public class StreamChatServerMain {
 		
 		StreamChatServer application = new StreamChatServer();
 		application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		application.runServer();
+//		application.runServer();
 		
 	}
 }

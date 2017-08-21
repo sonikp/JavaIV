@@ -50,6 +50,18 @@ Requirements:
 Research Notes:
 http://cs.lmu.edu/~ray/notes/javanetexamples/
 
+Client:
+http://pirate.shu.edu/~wachsmut/Teaching/CSAS3211/2010-03/KnockClient.java
+
+
+So Far
+1. server start => yes, but not gui yet
+2. client connect
+	- need multiple clients => yes
+	- client count	=> not yet
+
+6. startup with different jokes
+
 
 
 

@@ -1,5 +1,7 @@
 package aKKMulti.UI;
 
+import java.security.SecureRandom;
+import java.util.Random;
 
 public class KnockKnockProtocol {
     private static final int WAITING = 0;
@@ -10,7 +12,8 @@ public class KnockKnockProtocol {
     private static final int NUMJOKES = 5;
 
     private int state = WAITING;
-    private int currentJoke = 0;
+    private SecureRandom rand = new SecureRandom();
+    private int currentJoke = rand.nextInt(5);			// rand.nextInt(6);						// removed = 0;
 
     private String[] clues = { "Turnip", "Little Old Lady", "Atch", "Who", "Who" };
     private String[] answers = { "Turnip the heat, it's cold in here!",
@@ -21,6 +24,11 @@ public class KnockKnockProtocol {
 
     public String processInput(String theInput) {
         String theOutput = null;
+        System.out.println("currentJoke = " + currentJoke);
+        
+        if (currentJoke == (NUMJOKES - 1)) {
+        	currentJoke = 0;
+        }
 
         if (state == WAITING) {
             theOutput = "Knock! Knock!";
