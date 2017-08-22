@@ -5,6 +5,8 @@ import java.util.Random;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Properties;
 
 public class KnockKnockProtocol {
@@ -20,34 +22,48 @@ public class KnockKnockProtocol {
     private static final int SENTCLUE = 2;
     private static final int ANOTHER = 3;
 
-    private static final int NUMJOKES = 5;
+    private static final int NUMJOKES = 19;
 
     private int state = WAITING;
     private SecureRandom rand = new SecureRandom();
-    private int currentJoke = rand.nextInt(5);			// rand.nextInt(6);						// removed = 0;
-
+    private int currentJoke = rand.nextInt(19);			// rand.nextInt(6);						// removed = 0;
+    
+    /*
     private String[] clues = { "Turnip", "Little Old Lady", "Atch", "Who", "Who" };
     private String[] answers = { "Turnip the heat, it's cold in here!",
                                  "I didn't know you could yodel!",
                                  "Bless you!",
                                  "Is there an owl in here?",
                                  "Is there an echo in here?" };
-
-    public String processInput(String theInput) throws FileNotFoundException, IOException {
-    	
+                       
+	*/
+    
+    public KnockKnockProtocol() throws FileNotFoundException, IOException {
     	//get properties file
     	Properties prop = new Properties();
     	prop.load(new FileInputStream("KnockKnockData.properties"));
 
     	//get two dimensional array from the properties file that has been delineated
     	knockknockInfo = fetchArrayFromPropFile("knockknockInfo", prop);
-
+    }
+    
+    public String processInput(String theInput) throws FileNotFoundException, IOException {
+    	
+//    	//get properties file
+//    	Properties prop = new Properties();
+//    	prop.load(new FileInputStream("KnockKnockData.properties"));
+//
+//    	//get two dimensional array from the properties file that has been delineated
+//    	knockknockInfo = fetchArrayFromPropFile("knockknockInfo", prop);
+    	
+    	
+    	/*
     	System.out.println("==================================");
 
     	int j = 2;
     	System.out.println(knockknockInfo[j][CLUE]);
     	System.out.println(knockknockInfo[j][ANSWER]);
-
+		*/
 
     	//below code will print out all the states, their capitals, and nicknames
     	for (int i = 0; i < knockknockInfo.length; i++) {
@@ -66,8 +82,10 @@ public class KnockKnockProtocol {
     	
     	
     	//==============================================
+
+    	
         String theOutput = null;
-        System.out.println("randomizeJoke: " + currentJoke);
+        System.out.println("\n===========================\nrandomizeJoke: " + currentJoke + "\n");
         
         if (currentJoke == (NUMJOKES - 1)) {
         	currentJoke = 0;
@@ -96,11 +114,11 @@ public class KnockKnockProtocol {
                 state = SENTKNOCKKNOCK;
             }
         } else if (state == ANOTHER) {
-        	currentJoke = rand.nextInt(5);
+        	currentJoke = rand.nextInt(19);
         	System.out.println("randomizeJoke: " + currentJoke);
             if (theInput.equalsIgnoreCase("y")) {
                 theOutput = "Knock! Knock!";
-                if (currentJoke == (NUMJOKES - 1))
+                if (currentJoke == (NUMJOKES))
                     currentJoke = 0;
                 else
                     currentJoke++;
@@ -123,6 +141,8 @@ public class KnockKnockProtocol {
 
 		//get array split up by the semicolin
 		String[] a = propFile.getProperty(propertyName).split(";");
+		
+		Collections.shuffle(Arrays.asList(a));		// 
 
 		//create the two dimensional array with correct size
 		String[][] array = new String[a.length][a.length];
@@ -133,4 +153,10 @@ public class KnockKnockProtocol {
 		}
 		return array;
 	}
+	
+	// randomize // http://www.vogella.com/tutorials/JavaAlgorithmsShuffle/article.html
+	
+	
+
+	
 }

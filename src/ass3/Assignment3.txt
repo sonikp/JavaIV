@@ -42,7 +42,7 @@ Requirements:
 5. read jokes from a resource such as a file
 6. successive clients should get different initial jokes, do not need to guarantee complete difference, just randomness of initial joke
 7. consider a load time solution that populates the clues and answers arrays randomly
-8. consider a run-time solutions that has a random start location and operates on the lists as circular lists
+8. consider a run-time solutions that has a random start location and operates on the lists as circular lists => ring buffer
 9. add Javadoc comments to the source code
 10. make other changes to improve the "OO-ness" of the app
 
@@ -59,8 +59,10 @@ So Far
 2. client connect
 	- need multiple clients => yes
 	- client count	=> not yet
-
-6. startup with different jokes
+5. read jokes from a file => DONE
+6. startup with different jokes => DONE
+7. Randomize array using Collections.shuffle(Arrays.asList(a)); => DONE
+8. Ring buffer => https://stackoverflow.com/questions/590069/how-would-you-code-an-efficient-circular-buffer-in-java-or-c-sharp
 
 
 
