@@ -28,7 +28,7 @@ public class KnockKnockClient extends JFrame implements ActionListener {
 	Socket kkSocket = null;
     PrintWriter writeOutput = null;
     BufferedReader readInput = null;
-    BufferedReader stdIn = null;
+    BufferedReader strInput = null;
     String fromServer;
     String fromUser;
 //	private JTextField hostField;
@@ -99,7 +99,7 @@ public class KnockKnockClient extends JFrame implements ActionListener {
     
     public void getJoke() throws IOException {
     	
-    	stdIn = new BufferedReader(new InputStreamReader(System.in));
+    	strInput = new BufferedReader(new InputStreamReader(System.in));
 
     	while ((fromServer = readInput.readLine()) != null) {
     		System.out.println("Server: " + fromServer);
@@ -110,7 +110,7 @@ public class KnockKnockClient extends JFrame implements ActionListener {
     		}
     			
 
-    		fromUser = stdIn.readLine();		
+    		fromUser = strInput.readLine();		
     		if (fromUser != null) {
     			System.out.println("Client: " + fromUser);
     			displayArea.append("Client: " + fromUser  + "\n");
@@ -124,7 +124,7 @@ public class KnockKnockClient extends JFrame implements ActionListener {
     public void closeConnection() throws IOException {
         writeOutput.close();
         readInput.close();
-        stdIn.close();
+        strInput.close();
         kkSocket.close();
     }
 	

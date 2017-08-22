@@ -15,8 +15,8 @@ import javax.swing.JTextField;
 
 public class KKMultiServerUI extends JFrame {
 	
-	private JTextField enterField;	// inputs message from user
-	private JTextArea displayArea;
+	private JTextField serverTextField;	// inputs message from user
+	private JTextArea displayAreaServer;
 	private ObjectOutputStream output;
 	private ObjectInputStream input;
 	
@@ -27,29 +27,29 @@ public class KKMultiServerUI extends JFrame {
 		
 		threadServer = new KKMultiServerThread(null);
 
-		enterField = new JTextField();
-		enterField.setEditable(false);
+		serverTextField = new JTextField();
+		serverTextField.setEditable(false);
 
-		enterField.addActionListener(new ActionListener() {
+		serverTextField.addActionListener(new ActionListener() {
 
 			@Override	// send message to client
 			public void actionPerformed(ActionEvent e) {
 
 				sendData(e.getActionCommand());
-				enterField.setText(threadServer.getName());
+				serverTextField.setText(threadServer.getName());
 
 			}
 		});	// end enterField actionListener
 
-		add(enterField, BorderLayout.SOUTH);
+		add(serverTextField, BorderLayout.SOUTH);
 
-		displayArea = new JTextArea();
-		displayArea.append("Who's there?\n");
-		add(new JScrollPane(displayArea), BorderLayout.CENTER);
+		displayAreaServer = new JTextArea();
+		displayAreaServer.append("Who's there?\n");
+		add(new JScrollPane(displayAreaServer), BorderLayout.CENTER);
 
 
 		
-		setSize(300, 150);
+		setSize(400, 300);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

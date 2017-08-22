@@ -18,7 +18,7 @@ public class KKMultiServerThread extends Thread {
 	private BufferedReader inputFromClient;
 	private String inputLine, outputLine;
 
-	private KnockKnockProtocol kkp;
+	private KnockKnockProtocol_orig kkp;
 
 	public KKMultiServerThread(Socket socket) throws IOException {
 		super("KKMultiServerThread");
@@ -55,14 +55,12 @@ public class KKMultiServerThread extends Thread {
 							socket.getInputStream()));
 
 
-			kkp = new KnockKnockProtocol();
+			kkp = new KnockKnockProtocol_orig();
 			outputLine = kkp.processInput(null);
 			outputToClient.println(outputLine);
 
 			while ((inputLine = inputFromClient.readLine()) != null) {
-				System.out.println("received from client " + inputLine);
 				outputLine = kkp.processInput(inputLine);
-				System.out.println("output b4 println " + outputLine);
 				outputToClient.println(outputLine);
 				if (outputLine.equals("Bye"))
 					break;
