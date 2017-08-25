@@ -1,4 +1,4 @@
-package ass3;
+package ass3_test;
 
 import java.io.BufferedReader;
 import java.io.IOException;

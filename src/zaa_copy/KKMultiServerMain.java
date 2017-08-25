@@ -1,17 +1,16 @@
-package aKKMulti.UI;
+package zaa_copy;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import javax.swing.JFrame;
 
-public class KKMultiServer {
+public class KKMultiServerMain {
     
 	ServerSocket serverSocket = null;
 	boolean listening = true;
 	
 
-	public KKMultiServer() throws IOException {
-		
+	public KKMultiServerMain() throws IOException {
 		KKMultiServerUI GUI = new KKMultiServerUI();
 		GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -30,7 +29,7 @@ public class KKMultiServer {
 	public static void main(String[] args) throws IOException {
 
 
-		KKMultiServer app = new KKMultiServer();
+		KKMultiServerMain app = new KKMultiServerMain();
 		System.out.println("Main");
 
 

@@ -1,4 +1,4 @@
-package ass3;
+package ass3_test;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;

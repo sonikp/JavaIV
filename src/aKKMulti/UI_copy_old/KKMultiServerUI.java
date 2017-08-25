@@ -1,4 +1,4 @@
-package aKKMulti.UI;
+package aKKMulti.UI_copy_old;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -44,8 +44,7 @@ public class KKMultiServerUI extends JFrame {
 		add(serverTextField, BorderLayout.SOUTH);
 
 		displayAreaServer = new JTextArea();
-		displayAreaServer.append("Knock Knock Server started"
-				+ "\nListening on port 4444 (\"need to call validator\")?\n");
+		displayAreaServer.append("Who's there?\n");
 		add(new JScrollPane(displayAreaServer), BorderLayout.CENTER);
 
 

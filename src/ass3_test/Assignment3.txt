@@ -66,7 +66,7 @@ So Far
 6. startup with different jokes => DONE
 7. Randomize array using Collections.shuffle(Arrays.asList(a)); => DONE
 8. Ring buffer => https://stackoverflow.com/questions/590069/how-would-you-code-an-efficient-circular-buffer-in-java-or-c-sharp
-
+					better****http://www.museful.net/2012/software-development/circulararraylist-for-java
 Initialization vector for randomization as seed
 
 start clients with rpc's remote procedure calls
