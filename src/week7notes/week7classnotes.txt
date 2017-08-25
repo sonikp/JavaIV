@@ -1,0 +1,23 @@
+Java Security
+
+
+
+Java SE Security:
+http://www.oracle.com/technetwork/java/javase/tech/index-jsp-136007.html
+
+Security Coding Guidelines:
+http://www.oracle.com/technetwork/java/seccodeguide-139067.html#9-2
+
+
+slide 3:
+
+Slide 8:
+- avoid duplicate code
+- restrict privileges
+- use principle of least privilege : java.security.AccessController.doPrivileged
+
+Code Obfuscation
+
+prepare for android studio for next week
+
+

@@ -55,14 +55,21 @@ http://pirate.shu.edu/~wachsmut/Teaching/CSAS3211/2010-03/KnockClient.java
 
 
 So Far
-1. server start => yes, but not gui yet
+1. server start => yes, but not gui yet. Does this have to be a single GUI or can we have multiple GUI's, one for the application and server and one for the client apps?
 2. client connect
 	- need multiple clients => yes
 	- client count	=> not yet
+3. how does this look, what about remote clients or are they not considered. Should clients automatically be shutdown?
+4. I think so
+
 5. read jokes from a file => DONE
 6. startup with different jokes => DONE
 7. Randomize array using Collections.shuffle(Arrays.asList(a)); => DONE
 8. Ring buffer => https://stackoverflow.com/questions/590069/how-would-you-code-an-efficient-circular-buffer-in-java-or-c-sharp
+
+Initialization vector for randomization as seed
+
+start clients with rpc's remote procedure calls
 
 
 
