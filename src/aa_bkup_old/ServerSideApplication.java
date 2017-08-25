@@ -1,4 +1,4 @@
-package aa;
+package aa_bkup_old;
 
 
 
@@ -28,13 +28,16 @@ import java.util.concurrent.Executors;
 
 public class ServerSideApplication extends JFrame {
 	
-
-	// set up multi-threaded fields
+//	private final JPanel gamePanelMain;
+	
 	private ServerSocket serverSocket;
+	private Socket clientSocket;
 	private Thread serverThread;
 	private boolean shutdownServer = false;
 	KKMultiServerThread connect;
 	KnockKnockClient client;
+	
+
 	
 	////////Server side display fields//////
 	private JFrame serverApp;
@@ -53,7 +56,8 @@ public class ServerSideApplication extends JFrame {
 
 
 	public ServerSideApplication() {
-		super("Knock-Knock Application Launcher");		
+		super("Knock-Knock Application Launcher");
+		
 	
 		setLayout(new GridLayout(2, 1, 10, 10));
 		
@@ -70,6 +74,8 @@ public class ServerSideApplication extends JFrame {
 				// https://stackoverflow.com/questions/15541804/creating-the-serversocket-in-a-separate-thread
 				System.out.println("server START button clicked");
 				setShutdownServer(false);
+
+//				startServerJFrame();
 				
 				try {
 					startServer();
@@ -77,6 +83,15 @@ public class ServerSideApplication extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				/*
+				 
+				terminates listening port
+	
+				fuser -k 8008/tcp
+				
+				*/
+				
 				
 			}
 		});
@@ -113,14 +128,19 @@ public class ServerSideApplication extends JFrame {
 			public void actionPerformed(ActionEvent startSvr) {
 				
 				System.out.println("client CONNECT button clicked");
-							
+				
+				
+				
 				try {
-					startClient();
+//					startClientJPane();
+					startCLI();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-					
+				
+				
+				
 			}
 		});
 		
@@ -131,7 +151,8 @@ public class ServerSideApplication extends JFrame {
 				
 				System.out.println("client DISCONNECT button clicked");
 
-
+				
+				
 			}
 		});
 		
@@ -139,14 +160,98 @@ public class ServerSideApplication extends JFrame {
 		add(serverStop);
 		add(clientStart);
 		add(clientStop);
+
+
 		
 		setSize(400, 300);
 		setVisible(true);
 		
 	}
 	
+
+	
+	
+	public void startServerJFrame() {
+		System.out.println("serverStart()");
+    	serverApp = new JFrame("this is the SERVER");
+    	serverDisplayArea = new JTextArea();
+    	serverDisplayArea.setEditable(false);
+
+    	serverApp.add(serverDisplayArea, BorderLayout.CENTER );
+    	serverDisplayArea.setText( "Server starting.....\n" );
+    	
+    	
+    	serverApp.setSize(400, 300);
+    	serverApp.setVisible(true);
+    	serverApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	serverApp.setLocation(1500, 400);
+	}
+	
+	
+	public void startClientJPane() throws IOException{
+		
+		KnockKnockClient client = new KnockKnockClient();
+		client.setLocation(1500,100);
+		client.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		client.setVisible(true);
+		
+//		
+//		
+//		System.out.println("client started");
+//    	Socket socketConnectTo = null;
+////    	System.out.println("remoteAddress = " + clientSocket.getRemoteSocketAddress());
+//		try {
+//			socketConnectTo = new Socket("127.0.0.1", 8008);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//        BufferedReader input = null;
+//		try {
+//			input = new BufferedReader(new InputStreamReader(socketConnectTo.getInputStream()));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//        String answer = null;
+//		try {
+//			answer = input.readLine();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//        JOptionPane.showMessageDialog(null, answer);
+////        System.exit(0);
+	}
+	
+//	public void startClient() throws IOException {
+//
+//		Runnable clientTask = null;
+//
+//		if (!shutdownClient) {
+//			clientTask = new Runnable() {
+//
+//				@Override
+//				public void run() {
+//					try {   
+//						KnockKnockClient client = new KnockKnockClient();
+//						client.setLocation(1500,100);
+//						client.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//						client.setVisible(true);
+//					}
+//					catch (Exception ex) {
+//						ex.printStackTrace();
+//					}
+//				}
+//
+//			};
+//		}
+//	}
+//}
 	    	
-public void startClient() throws IOException {
+	    	
+public void startCLI() throws IOException {
 
 	Runnable clientTask = null;
 
@@ -164,6 +269,7 @@ public void startClient() throws IOException {
 					client.setVisible(true);
 
 
+
 				} catch (IOException e) {
 					System.err.println("Unable to process client request");
 					e.printStackTrace();
@@ -178,7 +284,9 @@ public void startClient() throws IOException {
 
 		try {
 
+
 			clientProcessingPool.shutdown();
+
 
 			try {
 				serverSocket.close();
@@ -187,21 +295,37 @@ public void startClient() throws IOException {
 				ex.printStackTrace();
 			}
 
+
+
+
+
+
 		}
 		catch (SocketException ex) {
 			ex.printStackTrace();
 		}
 		finally {
-			
-			// currently empty
+
+
+
+
 		}
+
+
 	}
+
+
+
 
 	serverThread = new Thread(clientTask);
 	serverThread.start();
 
 }  		
 	    		
+	               	
+	            	
+	
+	
 	
     public void startServer() throws IOException {
     	
@@ -214,12 +338,28 @@ public void startClient() throws IOException {
             	@Override
             	public void run() {
             		try {
-            			           			
+            			
+            			
             			KKMultiServerUI GUI = new KKMultiServerUI();
             			GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+            			
+            			// RB: calling this from the constructor DOES work here
             			connect = new KKMultiServerThread(null);
             			connect.serverConnection();
+            			
+            			
+            			
+//        				serverSocket = new ServerSocket(8008);
+//        				System.out.println("Server started listening 8008");
+//
+//        				
+//        				System.out.println("Waiting for clients to connect...");
+//
+//        				while (true) {
+//        					clientSocket = serverSocket.accept();
+//        					clientProcessingPool.submit(new ClientTask(clientSocket));
+//        				}
         				
         			} catch (IOException e) {
         				System.err.println("Unable to process client request");
@@ -245,25 +385,73 @@ public void startClient() throws IOException {
 	            catch (SocketException ex) {
 	            	ex.printStackTrace();
 	            }
+	            
+	
+
+
+
 	           
 	        }
 	        catch (SocketException ex) {
 	        	ex.printStackTrace();
 	        }
 	        finally {
-	        	// nothing here at the moment
+	        	
+
+
 
 	        }
- 
+
+	        
     	}
 
+
+ 
         
         serverThread = new Thread(serverTask);
         serverThread.start();
 
     }
 
+    private class ClientTask implements Runnable {
+        private Socket clientSocket;
 
+        private ClientTask(Socket clientSocket) {
+            this.clientSocket = clientSocket;
+        }
+
+        @Override
+        public void run() {
+            System.out.println("Got a client !");
+
+            // Do whatever required to process the client's request
+            try {
+            	
+        		KnockKnockClient client = new KnockKnockClient();
+        		client.setLocation(1500,100);
+        		client.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        		client.setVisible(true);
+            	
+            	
+//				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+//				out.println(new Date().toString());
+			} 
+            catch (IOException e) {
+				e.printStackTrace();
+			}
+
+
+            try {
+            	System.out.println("closing client connection");
+                clientSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+    }
+    
 	public Boolean getShutdownServer() {
         return shutdownServer;
     }

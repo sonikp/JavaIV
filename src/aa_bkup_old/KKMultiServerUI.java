@@ -1,4 +1,4 @@
-package aa;
+package aa_bkup_old;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -47,9 +47,11 @@ public class KKMultiServerUI extends JFrame {
 		displayAreaServer.append("Knock Knock Server started"
 				+ "\nListening on port 4444 (\"need to call validator\")?\n");
 		add(new JScrollPane(displayAreaServer), BorderLayout.CENTER);
+
+
 		
 		setSize(400, 300);
-		setLocation(1500,400);
+		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

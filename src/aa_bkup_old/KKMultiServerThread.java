@@ -1,4 +1,4 @@
-package aa;
+package aa_bkup_old;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,10 +24,13 @@ public class KKMultiServerThread extends Thread {
 		super("KKMultiServerThread");
 
 		this.socket = socket;
+		// RB: calling this from the constructor DOESN'T work here
+		//		this.serverConnection();
 
 	}
 
 	public void serverConnection() throws IOException {
+
 
 		try {
 			serverSocket = new ServerSocket(4444);
@@ -37,6 +40,7 @@ public class KKMultiServerThread extends Thread {
 		}
 		while (listening)
 			new KKMultiServerThread(serverSocket.accept()).start();
+
 
 	}
 
