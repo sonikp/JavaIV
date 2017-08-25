@@ -8,7 +8,7 @@ import java.net.Socket;
 
 import javax.swing.JFrame;
 
-public class KKMultiServerThread extends Thread {
+public class KnockKnockServerController extends Thread {
 	private Socket socket = null;
 	private ServerSocket serverSocket = null;
 	private boolean listening = true;
@@ -18,9 +18,9 @@ public class KKMultiServerThread extends Thread {
 	private BufferedReader inputFromClient;
 	private String inputLine, outputLine;
 
-	private KnockKnockProtocol kkp;
+	private KnockKnockServerProtocol kkp;
 
-	public KKMultiServerThread(Socket socket) throws IOException {
+	public KnockKnockServerController(Socket socket) throws IOException {
 		super("KKMultiServerThread");
 
 		this.socket = socket;
@@ -36,7 +36,7 @@ public class KKMultiServerThread extends Thread {
 			System.exit(-1);
 		}
 		while (listening)
-			new KKMultiServerThread(serverSocket.accept()).start();
+			new KnockKnockServerController(serverSocket.accept()).start();
 
 	}
 
@@ -51,7 +51,7 @@ public class KKMultiServerThread extends Thread {
 							socket.getInputStream()));
 
 
-			kkp = new KnockKnockProtocol();
+			kkp = new KnockKnockServerProtocol();
 			outputLine = kkp.processInput(null);
 			outputToClient.println(outputLine);
 

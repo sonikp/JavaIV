@@ -8,17 +8,17 @@ public class KKMultiServer {
     
 	ServerSocket serverSocket = null;
 	boolean listening = true;
-	KKMultiServerThread connect;
+	KnockKnockServerController connect;
 	
 
 	public KKMultiServer() throws IOException {
 		
-		KKMultiServerUI GUI = new KKMultiServerUI();
+		KnockKnockServerView GUI = new KnockKnockServerView();
 		GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		
 		// RB: calling this from the constructor DOES work here
-		connect = new KKMultiServerThread(null);
+		connect = new KnockKnockServerController(null);
 		connect.serverConnection();
 		
 

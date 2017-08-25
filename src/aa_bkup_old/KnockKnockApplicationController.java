@@ -1,4 +1,4 @@
-package aa;
+package aa_bkup_old;
 
 
 
@@ -26,14 +26,14 @@ import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ServerSideApplication extends JFrame {
+public class KnockKnockApplicationController extends JFrame {
 	
 
 	// set up multi-threaded fields
 	private ServerSocket serverSocket;
 	private Thread serverThread;
 	private boolean shutdownServer = false;
-	KKMultiServerThread connect;
+	KnockKnockServerController connect;
 	KnockKnockClient client;
 	
 	////////Server side display fields//////
@@ -52,7 +52,7 @@ public class ServerSideApplication extends JFrame {
 	
 
 
-	public ServerSideApplication() {
+	public KnockKnockApplicationController() {
 		super("Knock-Knock Application Launcher");		
 	
 		setLayout(new GridLayout(2, 1, 10, 10));
@@ -215,10 +215,10 @@ public void startClient() throws IOException {
             	public void run() {
             		try {
             			           			
-            			KKMultiServerUI GUI = new KKMultiServerUI();
+            			KnockKnockServerView GUI = new KnockKnockServerView();
             			GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            			connect = new KKMultiServerThread(null);
+            			connect = new KnockKnockServerController(null);
             			connect.serverConnection();
         				
         			} catch (IOException e) {

@@ -1,4 +1,4 @@
-package aa_bkup;
+package aa;
 
 import java.security.SecureRandom;
 import java.util.Random;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Properties;
 
-public class KnockKnockProtocol {
+public class KnockKnockServerProtocol {
     
 	//Key for 2nd part of array
 	final static int CLUE = 0;
@@ -38,7 +38,7 @@ public class KnockKnockProtocol {
                        
 	*/
     
-    public KnockKnockProtocol() throws FileNotFoundException, IOException {
+    public KnockKnockServerProtocol() throws FileNotFoundException, IOException {
     	//get properties file
     	Properties prop = new Properties();
     	prop.load(new FileInputStream("KnockKnockData.properties"));

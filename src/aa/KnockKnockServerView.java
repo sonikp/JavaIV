@@ -1,4 +1,4 @@
-package aa_bkup_old;
+package aa;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -13,19 +13,19 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class KKMultiServerUI extends JFrame {
+public class KnockKnockServerView extends JFrame {
 	
 	private JTextField serverTextField;	// inputs message from user
 	private JTextArea displayAreaServer;
 	private ObjectOutputStream output;
 	private ObjectInputStream input;
 	
-	KKMultiServerThread threadServer;
+	KnockKnockServerController threadServer;
 	
-	public KKMultiServerUI() throws IOException {
+	public KnockKnockServerView() throws IOException {
 		super("KK Multi Server");
 		
-		threadServer = new KKMultiServerThread(null);
+		threadServer = new KnockKnockServerController(null);
 
 		serverTextField = new JTextField();
 		serverTextField.setEditable(false);
@@ -47,11 +47,9 @@ public class KKMultiServerUI extends JFrame {
 		displayAreaServer.append("Knock Knock Server started"
 				+ "\nListening on port 4444 (\"need to call validator\")?\n");
 		add(new JScrollPane(displayAreaServer), BorderLayout.CENTER);
-
-
 		
 		setSize(400, 300);
-		setLocationRelativeTo(null);
+		setLocation(1500,400);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
