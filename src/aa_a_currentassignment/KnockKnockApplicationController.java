@@ -195,14 +195,16 @@ public void startClient() throws IOException {
 		try {
 
 			clientProcessingPool.shutdown();
+			threadServerController.closeConnections();
+			System.out.println("replaced serverSocket.close()");
 
-			try {
-				serverSocket.close();
-			}
-			catch (SocketException ex) {
-				System.out.println("enter printstacktrace()");
-				ex.printStackTrace();
-			}
+//			try {
+////				serverSocket.close();
+//			}
+//			catch (SocketException ex) {
+//				System.out.println("enter printstacktrace()");
+//				ex.printStackTrace();
+//			}
 
 		}
 		catch (SocketException ex) {

@@ -1,4 +1,4 @@
-package a_chatserver_combining;
+package chatserver_copy_4debug;
 
 
 import java.net.*;
@@ -116,7 +116,7 @@ public class Client  {
 	 * When something goes wrong
 	 * Close the Input/Output streams and disconnect not much to do in the catch clause
 	 */
-	public void disconnect() {
+	private void disconnect() {
 		try { 
 			if(sInput != null) sInput.close();
 		}

@@ -1,4 +1,4 @@
-package a_chatserver_combining;
+package chatserver_copy_4debug;
 
 import javax.swing.*;
 import java.awt.*;
@@ -70,12 +70,6 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 	// start or stop where clicked
 	public void actionPerformed(ActionEvent e) {
 		// if running we have to stop
-		serverStartStop();
-
-	}
-	
-	public void serverStartStop() {
-		
 		if(server != null) {
 			server.stop();
 			server = null;
@@ -98,7 +92,6 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 		new ServerRunning().start();
 		stopStart.setText("Stop");
 		tPortNumber.setEditable(false);
-		
 	}
 	
 	// entry point to start the Server
@@ -142,7 +135,7 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 			// the server failed
 			stopStart.setText("Start");
 			tPortNumber.setEditable(true);
-			appendEvent("Server stopped, no longer listening\n");
+			appendEvent("Server crashed\n");
 			server = null;
 		}
 	}

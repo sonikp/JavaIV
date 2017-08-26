@@ -12,6 +12,7 @@ public class KnockKnockServerController extends Thread {
 	
 	private KnockKnockServerView view;
 	
+	
 	private Socket socket = null;
 	private ServerSocket serverSocket = null;
 	private boolean listening = true;

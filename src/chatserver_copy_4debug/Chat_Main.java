@@ -1,4 +1,4 @@
-package a_chatserver_combining;
+package chatserver_copy_4debug;
 
 
 import java.awt.GridLayout;
@@ -16,11 +16,6 @@ import java.util.concurrent.ExecutionException;
 
 public class Chat_Main extends JFrame {
 	
-	// application objects
-	private ServerGUI serverapp; // = new ServerGUI(4444);
-	private String localhost = "127.0.0.7";
-	private ClientGUI clientapp; // = new ClientGUI(localhost, 4444);
-	
 	// components for starting the Knock Knock server application
 	private final JPanel startServerJPanel = new JPanel(new GridLayout(2, 2, 5, 5));
 //	private final JTextField startServerJTextField = new JTextField();
@@ -31,14 +26,12 @@ public class Chat_Main extends JFrame {
 	// components for starting the Knock Knock client application
 	private final JPanel startClientThreadJPanel = new JPanel(new GridLayout(2, 2, 5, 5));
 	private final JButton startClientJButton = new JButton("Start Client");
-	private final JButton stopClientJButton = new JButton("Logout");
+	private final JButton stopClientJButton = new JButton("Stop Client");
 	
-	// constructor
+	// constuctor
 	public Chat_Main() {
 		
 		super("KnockKnock Launch Application");
-
-		
 		setLayout(new GridLayout(2, 1, 10, 10));
 		
 		// add GUI components to the SwingWorker
@@ -51,9 +44,7 @@ public class Chat_Main extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("Start SERVER button pressed");
-				serverapp = new ServerGUI(4444);
-				serverapp.serverStartStop();
-//				System.out.println(serverapp.getServerState());
+				ServerGUI serverapp = new ServerGUI(1500);
 
 				
 				// create a task to perform calculation in background
@@ -69,7 +60,6 @@ public class Chat_Main extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("stop SERVER button pressed");
-				serverapp.serverStartStop();
 				
 
 				
@@ -93,11 +83,7 @@ public class Chat_Main extends JFrame {
 				
 				System.out.println("Start CLIENT button pressed");
 				
-				clientapp = new ClientGUI(localhost, 4444);
-				
-				clientapp.clientStartStop(event);
-				
-
+				ClientGUI clientApp = new ClientGUI("localhost", 1500);
 				
 
 			}
@@ -107,11 +93,8 @@ public class Chat_Main extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				System.out.println(event);
 				
-				
-
-				clientapp.clientStartStop(event);
+				System.out.println("Stop CLIENT button pressed");
 				
 
 			}

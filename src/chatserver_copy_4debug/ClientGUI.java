@@ -1,4 +1,4 @@
-package a_chatserver_combining;
+package chatserver_copy_4debug;
 
 
 import javax.swing.*;
@@ -120,18 +120,10 @@ public class ClientGUI extends JFrame implements ActionListener {
 	* Button or JTextField clicked
 	*/
 	public void actionPerformed(ActionEvent e) {
-		clientStartStop(e);
-
-	}
-	
-	public void clientStartStop(ActionEvent e) {
-		
 		Object o = e.getSource();
-		System.out.println(o);
 		// if it is the Logout button
 		if(o == logout) {
 			client.sendMessage(new ChatMessage(ChatMessage.LOGOUT, ""));
-			client.disconnect();
 			return;
 		}
 		// if it the who is in button
