@@ -12,7 +12,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -22,6 +25,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+
 
 public class KnockKnockClient extends JFrame implements ActionListener {
     
@@ -38,6 +43,13 @@ public class KnockKnockClient extends JFrame implements ActionListener {
 //	private JButton quitButton;
 	
 	private JTextArea displayArea;
+	private boolean shutdownClient;
+
+	private Object threadServerController;
+	private String shutdownServer;
+	private Thread serverThread;
+	
+	private final ExecutorService clientProcessingPool = Executors.newCachedThreadPool();
 	
     public KnockKnockClient() throws IOException {
     	super("Super Knock-Knock Client");
@@ -143,4 +155,74 @@ public class KnockKnockClient extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void startClient() throws IOException {
+
+		Runnable clientTask = null;
+
+		if (!shutdownClient) {
+
+			clientTask = new Runnable() {
+
+				@Override
+				public void run() {
+					try {
+						
+						KnockKnockClient client = new KnockKnockClient();
+						client.setLocation(1500,100);
+						client.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+						client.setVisible(true);
+
+
+					} catch (IOException e) {
+						System.err.println("Unable to process client request");
+						e.printStackTrace();
+					}
+				}
+			};
+
+
+		}
+		else {
+			System.out.println("!!!enter shutdown mode, shutdownServer = " + shutdownServer);
+			
+//			clientProcessingPool.shutdown();
+			
+			try {
+
+				clientProcessingPool.shutdown();
+				closeConnections();
+				System.out.println("replaced serverSocket.close()");
+
+//				try {
+////					serverSocket.close();
+//				}
+//				catch (SocketException ex) {
+//					System.out.println("enter printstacktrace()");
+//					ex.printStackTrace();
+//				}
+
+			}
+			catch (SocketException ex) {
+				ex.printStackTrace();
+			}
+			finally {
+				
+				// currently empty
+			}
+		}
+
+		serverThread = new Thread(clientTask);
+		serverThread.start();
+
+	} 
+	public void closeConnections() throws IOException {
+		
+//		System.out.println("closeConnections()");
+//		outputToClient.close();
+//		inputFromClient.close();
+//		socket.close();
+//		serverSocket.close();
+	}
+	
 }

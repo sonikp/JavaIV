@@ -124,6 +124,8 @@ public class ClientGUI extends JFrame implements ActionListener {
 
 	}
 	
+	
+	
 	public void clientStartStop(ActionEvent e) {
 		
 		Object o = e.getSource();
