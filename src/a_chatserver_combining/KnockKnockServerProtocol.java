@@ -1,4 +1,4 @@
-package aa;
+package a_chatserver_combining;
 
 import java.security.SecureRandom;
 import java.util.Random;

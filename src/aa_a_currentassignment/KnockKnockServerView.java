@@ -1,4 +1,4 @@
-package aa;
+package aa_a_currentassignment;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -15,17 +15,22 @@ import javax.swing.JTextField;
 
 public class KnockKnockServerView extends JFrame {
 	
+	// Application System components (MVC)
+	private KnockKnockServerController threadServerController;
+	private KnockKnockClient client;
+	
+	
 	private JTextField serverTextField;	// inputs message from user
 	private JTextArea displayAreaServer;
 	private ObjectOutputStream output;
 	private ObjectInputStream input;
 	
-	KnockKnockServerController threadServer;
+
 	
 	public KnockKnockServerView() throws IOException {
 		super("KK Multi Server");
 		
-		threadServer = new KnockKnockServerController(null);
+		threadServerController = new KnockKnockServerController(null);
 
 		serverTextField = new JTextField();
 		serverTextField.setEditable(false);
@@ -36,7 +41,7 @@ public class KnockKnockServerView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				sendData(e.getActionCommand());
-				serverTextField.setText(threadServer.getName());
+				serverTextField.setText(threadServerController.getName());
 
 			}
 		});	// end enterField actionListener
@@ -46,6 +51,7 @@ public class KnockKnockServerView extends JFrame {
 		displayAreaServer = new JTextArea();
 		displayAreaServer.append("Knock Knock Server started"
 				+ "\nListening on port 4444 (\"need to call validator\")?\n");
+		displayAreaServer.append("Server Running = " + threadServerController.isServerRunningStatus());
 		add(new JScrollPane(displayAreaServer), BorderLayout.CENTER);
 		
 		setSize(400, 300);

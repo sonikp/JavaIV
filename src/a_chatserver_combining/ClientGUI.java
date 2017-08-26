@@ -1,4 +1,4 @@
-package zaa1;
+package a_chatserver_combining;
 
 
 import javax.swing.*;

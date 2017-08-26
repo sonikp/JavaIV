@@ -1,4 +1,4 @@
-package aa;
+package aa_a_currentassignment;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;

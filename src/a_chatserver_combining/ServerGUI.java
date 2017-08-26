@@ -1,14 +1,17 @@
-package zaa1;
+package a_chatserver_combining;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 /*
+ * http://www.dreamincode.net/forums/topic/259777-a-simple-chat-program-with-clientserver-gui-optional/
+ * 
  * The server as a GUI
  */
 public class ServerGUI extends JFrame implements ActionListener, WindowListener {
 	
+	///========OriginalStart==========
 	private static final long serialVersionUID = 1L;
 	// the stop and start buttons
 	private JButton stopStart;
@@ -18,7 +21,7 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 	private JTextField tPortNumber;
 	// my server
 	private Server server;
-	
+	///========OriginalFinish==========
 	
 	// server constructor that receive the port to listen to for connection as parameter
 	ServerGUI(int port) {
@@ -52,7 +55,7 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 		setSize(400, 600);
 		setVisible(true);
 	}		
-
+	///========OriginalStart==========
 	// append message to the two JTextArea
 	// position at the end
 	void appendRoom(String str) {
@@ -62,9 +65,10 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 	void appendEvent(String str) {
 		event.append(str);
 		event.setCaretPosition(chat.getText().length() - 1);
-		
 	}
+	///========OriginalFinish==========
 	
+	///========OriginalStart==========
 	// start or stop where clicked
 	public void actionPerformed(ActionEvent e) {
 		// if running we have to stop

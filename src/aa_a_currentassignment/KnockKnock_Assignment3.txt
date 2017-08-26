@@ -55,12 +55,11 @@ http://pirate.shu.edu/~wachsmut/Teaching/CSAS3211/2010-03/KnockClient.java
 
 
 So Far
-1. server start => Done
-2. client connect => Done
-	- need multiple clients => Done
-	- should not start clients without server running => Done (pretty dodgy)
+1. server start => yes, but not gui yet. Does this have to be a single GUI or can we have multiple GUI's, one for the application and server and one for the client apps?
+2. client connect
+	- need multiple clients => yes
 	- client count	=> not yet
-3. automatically stop clients when shutting down the server => not done
+3. how does this look, what about remote clients or are they not considered. Should clients automatically be shutdown?
 4. I think so
 
 5. read jokes from a file => DONE
@@ -73,11 +72,6 @@ Initialization vector for randomization as seed
 start clients with rpc's remote procedure calls
 
 
-
-reading for shutdown error:
-
-http://www.dreamincode.net/forums/topic/259777-a-simple-chat-program-with-clientserver-gui-optional/
-https://edn.embarcadero.com/article/31995
 
 
 

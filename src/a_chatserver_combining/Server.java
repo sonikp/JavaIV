@@ -1,4 +1,4 @@
-package zaa1;
+package a_chatserver_combining;
 
 
 import java.io.*;
@@ -13,9 +13,11 @@ public class Server {
 	// a unique ID for each connection
 	private static int uniqueId;
 	// an ArrayList to keep the list of the Client
-	private ArrayList<ClientThread> al;
+	private ArrayList<ClientThread> clientsArrayList;
+	
 	// if I am in a GUI
 	private ServerGUI sg;
+	
 	// to display time
 	private SimpleDateFormat sdf;
 	// the port number to listen for connection
@@ -33,14 +35,14 @@ public class Server {
 	}
 	
 	public Server(int port, ServerGUI sg) {
-		// GUI or not
+		// GUI or not :: MF to be removed
 		this.sg = sg;
 		// the port
 		this.port = port;
 		// to display hh:mm:ss
 		sdf = new SimpleDateFormat("HH:mm:ss");
 		// ArrayList for the Client list
-		al = new ArrayList<ClientThread>();
+		clientsArrayList = new ArrayList<ClientThread>();
 	}
 	
 	public void start() {
@@ -49,7 +51,7 @@ public class Server {
 		try 
 		{
 			// the socket used by the server
-			ServerSocket serverSocket = new ServerSocket(port);
+			ServerSocket serverSocket = new ServerSocket(4444);		// removed ServerSocket(port)
 
 			// infinite loop to wait for connections
 			while(keepGoing) 
@@ -62,14 +64,14 @@ public class Server {
 				if(!keepGoing)
 					break;
 				ClientThread t = new ClientThread(socket);  // make a thread of it
-				al.add(t);									// save it in the ArrayList
+				clientsArrayList.add(t);									// save it in the ArrayList
 				t.start();
 			}
 			// I was asked to stop
 			try {
 				serverSocket.close();
-				for(int i = 0; i < al.size(); ++i) {
-					ClientThread tc = al.get(i);
+				for(int i = 0; i < clientsArrayList.size(); ++i) {
+					ClientThread tc = clientsArrayList.get(i);
 					try {
 					tc.sInput.close();
 					tc.sOutput.close();
@@ -129,11 +131,11 @@ public class Server {
 		
 		// we loop in reverse order in case we would have to remove a Client
 		// because it has disconnected
-		for(int i = al.size(); --i >= 0;) {
-			ClientThread ct = al.get(i);
+		for(int i = clientsArrayList.size(); --i >= 0;) {
+			ClientThread ct = clientsArrayList.get(i);
 			// try to write to the Client if it fails remove it from the list
 			if(!ct.writeMsg(messageLf)) {
-				al.remove(i);
+				clientsArrayList.remove(i);
 				display("Disconnected Client " + ct.username + " removed from list.");
 			}
 		}
@@ -142,11 +144,11 @@ public class Server {
 	// for a client who logoff using the LOGOUT message
 	synchronized void remove(int id) {
 		// scan the array list until we found the Id
-		for(int i = 0; i < al.size(); ++i) {
-			ClientThread ct = al.get(i);
+		for(int i = 0; i < clientsArrayList.size(); ++i) {
+			ClientThread ct = clientsArrayList.get(i);
 			// found it
 			if(ct.id == id) {
-				al.remove(i);
+				clientsArrayList.remove(i);
 				return;
 			}
 		}
@@ -257,8 +259,8 @@ public class Server {
 				case ChatMessage.WHOISIN:
 					writeMsg("List of the users connected at " + sdf.format(new Date()) + "\n");
 					// scan al the users connected
-					for(int i = 0; i < al.size(); ++i) {
-						ClientThread ct = al.get(i);
+					for(int i = 0; i < clientsArrayList.size(); ++i) {
+						ClientThread ct = clientsArrayList.get(i);
 						writeMsg((i+1) + ") " + ct.username + " since " + ct.date);
 					}
 					break;
