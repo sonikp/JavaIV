@@ -1,15 +1,10 @@
-package a_chatserver_combining;
+package a_chatserver_combining_bkup1ST;
 
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.io.*;
+import java.net.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
+import java.util.*;
 
 /*
  * The server that can be run both as a console application or a GUI
@@ -18,7 +13,7 @@ public class Server {
 	// a unique ID for each connection
 	private static int uniqueId;
 	// an ArrayList to keep the list of the Client
-	private ArrayList<ClientThread> clientArrayList;
+	private ArrayList<ClientThread> al;
 	// if I am in a GUI
 	private ServerGUI sg;
 	// to display time
@@ -28,21 +23,13 @@ public class Server {
 	// the boolean that will be turned of to stop the server
 	private boolean keepGoing;
 	
-	//////////knockknock
-	private Socket socket = null;
-	private ServerSocket serverSocket = null;
-	private boolean listening = true;
-	private boolean serverRunningStatus = false;
-	
 
 	/*
 	 *  server constructor that receive the port to listen to for connection as parameter
 	 *  in console
 	 */
 	public Server(int port) {
-		
 		this(port, null);
-		System.out.println("Server.java constructor port :" + port);
 	}
 	
 	public Server(int port, ServerGUI sg) {
@@ -53,40 +40,36 @@ public class Server {
 		// to display hh:mm:ss
 		sdf = new SimpleDateFormat("HH:mm:ss");
 		// ArrayList for the Client list
-		clientArrayList = new ArrayList<ClientThread>();
+		al = new ArrayList<ClientThread>();
 	}
-
-	public void startKnockKnock() {
-		System.out.println("startKnockKnock()");
+	
+	public void start() {
 		keepGoing = true;
 		/* create socket server and wait for connection requests */
 		try 
 		{
 			// the socket used by the server
-//			serverSocket = new ServerSocket(port);
-			serverConnection();
+			ServerSocket serverSocket = new ServerSocket(port);
 
 			// infinite loop to wait for connections
 			while(keepGoing) 
 			{
 				// format message saying we are waiting
-				display("Server waiting for Knock Knock Clients on port " + port + ".");
+				display("Server waiting for Clients on port " + port + ".");
 				
-				new KKMultiServerThread(serverSocket.accept()).start();
-				
-//				Socket socket = serverSocket.accept();  	// accept connection
+				Socket socket = serverSocket.accept();  	// accept connection
 				// if I was asked to stop
 				if(!keepGoing)
 					break;
-				ClientThread clientThreadPool = new ClientThread(socket);  // make a thread of it
-				clientArrayList.add(clientThreadPool);									// save it in the ArrayList
-				clientThreadPool.start();
+				ClientThread t = new ClientThread(socket);  // make a thread of it
+				al.add(t);									// save it in the ArrayList
+				t.start();
 			}
 			// I was asked to stop
 			try {
 				serverSocket.close();
-				for(int i = 0; i < clientArrayList.size(); ++i) {
-					ClientThread tc = clientArrayList.get(i);
+				for(int i = 0; i < al.size(); ++i) {
+					ClientThread tc = al.get(i);
 					try {
 					tc.sInput.close();
 					tc.sOutput.close();
@@ -106,74 +89,7 @@ public class Server {
             String msg = sdf.format(new Date()) + " Exception on new ServerSocket: " + e + "\n";
 			display(msg);
 		}
-	}
-	
-	public void serverConnection() throws IOException {
-
-		try {
-			serverSocket = new ServerSocket(4444);
-			
-			
-
-		} catch (IOException e) {
-			System.err.println("Could not listen on port: 4444.");
-			System.exit(-1);
-		}
-//		while (listening)
-//			new KKMultiServerThread(serverSocket.accept()).start();
-			
-
-	}
-	
-	
-//	public void startChat() {
-//		keepGoing = true;
-//		System.out.println("startChat()");
-//		/* create socket server and wait for connection requests */
-//		try 
-//		{
-//			// the socket used by the server
-//			ServerSocket serverSocket = new ServerSocket(port);
-//
-//			// infinite loop to wait for connections
-//			while(keepGoing) 
-//			{
-//				// format message saying we are waiting
-//				display("Server waiting for Clients on port " + port + ".");
-//				
-//				Socket socket = serverSocket.accept();  	// accept connection
-//				// if I was asked to stop
-//				if(!keepGoing)
-//					break;
-//				ClientThread t = new ClientThread(socket);  // make a thread of it
-//				clientArrayList.add(t);									// save it in the ArrayList
-//				t.start();
-//			}
-//			// I was asked to stop
-//			try {
-//				serverSocket.close();
-//				for(int i = 0; i < clientArrayList.size(); ++i) {
-//					ClientThread tc = clientArrayList.get(i);
-//					try {
-//					tc.sInput.close();
-//					tc.sOutput.close();
-//					tc.socket.close();
-//					}
-//					catch(IOException ioE) {
-//						// not much I can do
-//					}
-//				}
-//			}
-//			catch(Exception e) {
-//				display("Exception closing the server and clients: " + e);
-//			}
-//		}
-//		// something went bad
-//		catch (IOException e) {
-//            String msg = sdf.format(new Date()) + " Exception on new ServerSocket: " + e + "\n";
-//			display(msg);
-//		}
-//	}		
+	}		
     /*
      * For the GUI to stop the server
      */
@@ -213,11 +129,11 @@ public class Server {
 		
 		// we loop in reverse order in case we would have to remove a Client
 		// because it has disconnected
-		for(int i = clientArrayList.size(); --i >= 0;) {
-			ClientThread ct = clientArrayList.get(i);
+		for(int i = al.size(); --i >= 0;) {
+			ClientThread ct = al.get(i);
 			// try to write to the Client if it fails remove it from the list
 			if(!ct.writeMsg(messageLf)) {
-				clientArrayList.remove(i);
+				al.remove(i);
 				display("Disconnected Client " + ct.username + " removed from list.");
 			}
 		}
@@ -226,11 +142,11 @@ public class Server {
 	// for a client who logoff using the LOGOUT message
 	synchronized void remove(int id) {
 		// scan the array list until we found the Id
-		for(int i = 0; i < clientArrayList.size(); ++i) {
-			ClientThread ct = clientArrayList.get(i);
+		for(int i = 0; i < al.size(); ++i) {
+			ClientThread ct = al.get(i);
 			// found it
 			if(ct.id == id) {
-				clientArrayList.remove(i);
+				al.remove(i);
 				return;
 			}
 		}
@@ -264,8 +180,7 @@ public class Server {
 		}
 		// create a server object and start it
 		Server server = new Server(portNumber);
-//		server.startChat();
-		server.startKnockKnock();
+		server.start();
 	}
 
 	/** One instance of this thread will run for each client */
@@ -283,7 +198,7 @@ public class Server {
 		// the date I connect
 		String date;
 
-		// Constructor
+		// Constructore
 		ClientThread(Socket socket) {
 			// a unique id
 			id = ++uniqueId;
@@ -342,8 +257,8 @@ public class Server {
 				case ChatMessage.WHOISIN:
 					writeMsg("List of the users connected at " + sdf.format(new Date()) + "\n");
 					// scan al the users connected
-					for(int i = 0; i < clientArrayList.size(); ++i) {
-						ClientThread ct = clientArrayList.get(i);
+					for(int i = 0; i < al.size(); ++i) {
+						ClientThread ct = al.get(i);
 						writeMsg((i+1) + ") " + ct.username + " since " + ct.date);
 					}
 					break;

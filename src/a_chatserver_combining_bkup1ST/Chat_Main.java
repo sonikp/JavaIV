@@ -1,4 +1,4 @@
-package a_chatserver_combining;
+package a_chatserver_combining_bkup1ST;
 
 
 import java.awt.GridLayout;
@@ -51,7 +51,7 @@ public class Chat_Main extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("Start SERVER button pressed");
-				serverapp = new ServerGUI(4445);
+				serverapp = new ServerGUI(4444);
 				serverapp.serverStartStop();
 //				System.out.println(serverapp.getServerState());
 
