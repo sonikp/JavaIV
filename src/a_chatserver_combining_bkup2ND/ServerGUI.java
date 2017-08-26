@@ -1,4 +1,4 @@
-package a_chatserver_combining_bkup;
+package a_chatserver_combining_bkup2ND;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -21,7 +21,7 @@ import javax.swing.JTextField;
  * 
  * The server as a GUI
  */
-public class ServerGUI extends JFrame implements ActionListener {	// , WindowListener
+public class ServerGUI extends JFrame implements ActionListener, WindowListener {
 	
 	private static final long serialVersionUID = 1L;
 	// the stop and start buttons
@@ -77,7 +77,7 @@ public class ServerGUI extends JFrame implements ActionListener {	// , WindowLis
 		add(center);
 		
 		// need to be informed when the user click the close button on the frame
-//		addWindowListener(this);	// window listener
+		addWindowListener(this);
 		setSize(400, 600);
 		setVisible(true);
 
@@ -112,36 +112,36 @@ public class ServerGUI extends JFrame implements ActionListener {	// , WindowLis
 		
 	}
 	
-//	public void chatServer() {
-//		server = null;
-//		// in the NorthPanel the PortNumber the Start and Stop buttons
-//		north = new JPanel();
-//		north.add(new JLabel("Port number: "));
-//		tPortNumber = new JTextField("  " + portChat);
-//		north.add(tPortNumber);
-//		// to stop or start the server, we start with "Start"
-//		stopStart = new JButton("Start");
-//		stopStart.addActionListener(this);
-//		north.add(stopStart);
-//		add(north, BorderLayout.NORTH);
-//		
-//		// the event and chat room
-//		JPanel center = new JPanel(new GridLayout(2,1));
-//		chat = new JTextArea(80,80);
-//		chat.setEditable(false);
-//		appendRoom("Chat room.\n");
-//		center.add(new JScrollPane(chat));
-//		event = new JTextArea(80,80);
-//		event.setEditable(false);
-//		appendEvent("Events log.\n");
-//		center.add(new JScrollPane(event));	
-//		add(center);
-//		
-//		// need to be informed when the user click the close button on the frame
-//		addWindowListener(this);
-//		setSize(400, 600);
-//		setVisible(true);
-//	}
+	public void chatServer() {
+		server = null;
+		// in the NorthPanel the PortNumber the Start and Stop buttons
+		north = new JPanel();
+		north.add(new JLabel("Port number: "));
+		tPortNumber = new JTextField("  " + portChat);
+		north.add(tPortNumber);
+		// to stop or start the server, we start with "Start"
+		stopStart = new JButton("Start");
+		stopStart.addActionListener(this);
+		north.add(stopStart);
+		add(north, BorderLayout.NORTH);
+		
+		// the event and chat room
+		JPanel center = new JPanel(new GridLayout(2,1));
+		chat = new JTextArea(80,80);
+		chat.setEditable(false);
+		appendRoom("Chat room.\n");
+		center.add(new JScrollPane(chat));
+		event = new JTextArea(80,80);
+		event.setEditable(false);
+		appendEvent("Events log.\n");
+		center.add(new JScrollPane(event));	
+		add(center);
+		
+		// need to be informed when the user click the close button on the frame
+		addWindowListener(this);
+		setSize(400, 600);
+		setVisible(true);
+	}
 	
 
 	// append message to the two JTextArea
@@ -181,7 +181,7 @@ public class ServerGUI extends JFrame implements ActionListener {	// , WindowLis
 			appendEvent("Invalid port number");
 			return;
 		}
-		// create a new Server
+		// ceate a new Server
 		server = new Server(port, this);
 		// and start it as a thread
 		new ServerRunning().start();
@@ -191,11 +191,11 @@ public class ServerGUI extends JFrame implements ActionListener {	// , WindowLis
 	}
 	
 	// entry point to start the Server
-//	public static void main(String[] arg) {
-//		// start server default port 1500
-////		int startupPort = ((int)portKK);
-//		new ServerGUI(4444);	// 	1500
-//	}
+	public static void main(String[] arg) {
+		// start server default port 1500
+//		int startupPort = ((int)portKK);
+		new ServerGUI(4444);	// 	1500
+	}
 
 	/*
 	 * If the user click the X button to close the application
@@ -216,12 +216,12 @@ public class ServerGUI extends JFrame implements ActionListener {	// , WindowLis
 		System.exit(0);
 	}
 	// I can ignore the other WindowListener method
-//	public void windowClosed(WindowEvent e) {}
-//	public void windowOpened(WindowEvent e) {}
-//	public void windowIconified(WindowEvent e) {}
-//	public void windowDeiconified(WindowEvent e) {}
-//	public void windowActivated(WindowEvent e) {}
-//	public void windowDeactivated(WindowEvent e) {}
+	public void windowClosed(WindowEvent e) {}
+	public void windowOpened(WindowEvent e) {}
+	public void windowIconified(WindowEvent e) {}
+	public void windowDeiconified(WindowEvent e) {}
+	public void windowActivated(WindowEvent e) {}
+	public void windowDeactivated(WindowEvent e) {}
 
 	/*
 	 * A thread to run the Server

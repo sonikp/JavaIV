@@ -1,11 +1,9 @@
-package a_chatserver_combining_bkup;
+package a_chatserver_combining_bkup2ND;
 
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,7 +20,6 @@ public class Chat_Main extends JFrame {
 	private ServerGUI serverapp; // = new ServerGUI(4444);
 	private String localhost = "127.0.0.7";
 	private ClientGUI clientapp; // = new ClientGUI(localhost, 4444);
-	private KnockKnockClient kkclientapp;	
 	
 	// components for starting the Knock Knock server application
 	private final JPanel startServerJPanel = new JPanel(new GridLayout(2, 2, 5, 5));
@@ -37,10 +34,9 @@ public class Chat_Main extends JFrame {
 	private final JButton stopClientJButton = new JButton("Logout");
 	
 	// constructor
-	public Chat_Main() throws IOException {
+	public Chat_Main() {
 		
 		super("KnockKnock Launch Application");
-		
 
 		
 		setLayout(new GridLayout(2, 1, 10, 10));
@@ -97,35 +93,9 @@ public class Chat_Main extends JFrame {
 				
 				System.out.println("Start CLIENT button pressed");
 				
-				try {
-					kkclientapp = new KnockKnockClient();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-//				kkclientapp.clientStartStop(event);
-//				try {
-//					kkclientapp = new KnockKnockClient();
-//					kkclientapp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}	
-//				
-//				
-//				
-//				try {
-//		
-//					kkclientapp.setLocation(1500, 100);
-//					kkclientapp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//					kkclientapp.setVisible(true);
-//					kkclientapp.connectToServer();
-//				} catch (IOException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//				
-		
+				clientapp = new ClientGUI(localhost, 4444);
+				
+				clientapp.clientStartStop(event);
 				
 
 				
@@ -141,7 +111,7 @@ public class Chat_Main extends JFrame {
 				
 				
 
-//				clientapp.clientStartStop(event);
+				clientapp.clientStartStop(event);
 				
 
 			}
@@ -157,7 +127,7 @@ public class Chat_Main extends JFrame {
 	}	// end constructor
 	
 	// main method begins
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		
 		Chat_Main application = new Chat_Main();
 		application.setLocationRelativeTo(null);

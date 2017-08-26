@@ -1,4 +1,4 @@
-package a_chatserver_combining_bkup;
+package a_chatserver_combining_bkup2ND;
 
 
 import javax.swing.*;
@@ -123,8 +123,6 @@ public class ClientGUI extends JFrame implements ActionListener {
 		clientStartStop(e);
 
 	}
-	
-	
 	
 	public void clientStartStop(ActionEvent e) {
 		
