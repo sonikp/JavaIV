@@ -25,23 +25,19 @@ public class KK_App_Main_START extends JFrame {
 	
 	// application objects
 	private KK_ServerAppGUI serverapp; 
-//	private String localhost = "127.0.0.1";
-//	private KK_ClientGUI_App kkclientapp;
 	private KK_ClientGUI_App kkclientapp;
 	
-	// components for starting the Knock Knock server application
-	private final JPanel startServerJPanel = new JPanel(new GridLayout(2, 2, 5, 5));
-//	private final JTextField startServerJTextField = new JTextField();
-	private final JButton startServerJButton = new JButton("Start Server");
-	private final JButton stopServerJButton = new JButton("Stop Server");
-	private final JLabel startServerJLabel = new JLabel();
+	// swing components starting the Knock Knock server application
+	private final JPanel startServerJPanel;
+	private final JButton startServerJButton;
+	private final JButton stopServerJButton;
+
+	// swing components for starting the Knock Knock client application
+	private final JPanel startClientThreadJPanel;
+	private final JButton startClientJButton;
+	private final JButton stopClientJButton;	
 	
-	// components for starting the Knock Knock client application
-	private final JPanel startClientThreadJPanel = new JPanel(new GridLayout(2, 2, 5, 5));
-	private final JButton startClientJButton = new JButton("Start Client");
-	private final JButton stopClientJButton = new JButton("Stop Client");	//Logout
 	private boolean shutdownClient;
-	
 	private Thread serverThread;
 	
 	// constructor
@@ -49,35 +45,51 @@ public class KK_App_Main_START extends JFrame {
 		
 		super("KnockKnock Launch Application");
 		
+		startServerJPanel = new JPanel(new GridLayout(2, 2, 5, 5));
+		startServerJButton = new JButton("Start Server");
+		stopServerJButton = new JButton("Stop Server");
+		
+		startClientThreadJPanel = new JPanel(new GridLayout(2, 2, 5, 5));
+		startClientJButton = new JButton("Start Client");
+		stopClientJButton = new JButton("Stop Client");	//Logout
+		
 		setLayout(new GridLayout(2, 1, 10, 10));
+		
+		// disable buttons until server is started
+		stopServerJButton.setEnabled(false);
+		startClientJButton.setEnabled(false);
+		stopClientJButton.setEnabled(false);
 		
 		// add GUI components to the SwingWorker
 		startServerJPanel.setBorder(new TitledBorder(new LineBorder(Color.BLACK), "Launch Server"));
 		startServerJButton.addActionListener(new ActionListener() {
 			
+			// start the serverside application
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				System.out.println("Start SERVER button pressed");
-				serverapp = new KK_ServerAppGUI(4445);
-				serverapp.serverStartStop();
+				stopServerJButton.setEnabled(true);
+				startClientJButton.setEnabled(true);
+				stopClientJButton.setEnabled(true);
 				
+				serverapp = new KK_ServerAppGUI(4444);
+				serverapp.serverStartStop();				
 			}
 		});	// end anonymous inner class, and end call to addActionListener
 		
 		stopServerJButton.addActionListener(new ActionListener() {
 			
+			// stop the serverside application
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				System.out.println("stop SERVER button pressed");
-				serverapp.serverStartStop();	
-				
+			
+				startClientJButton.setEnabled(false);
+				stopClientJButton.setEnabled(false);
+				serverapp.serverStartStop();				
 			}
 		});	// end anonymous inner class, and end call to addActionListener
 		
 		startServerJPanel.add(startServerJButton);
-		startServerJPanel.add(startServerJLabel);
 		startServerJPanel.add(stopServerJButton);
 		
 		// add GUI components to the event-dispatch thread panel
@@ -87,8 +99,7 @@ public class KK_App_Main_START extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				
-				System.out.println("Start CLIENT button pressed");
-				
+				// starts client application
 				try {
 					startClient();
 				} catch (IOException e) {
@@ -104,8 +115,7 @@ public class KK_App_Main_START extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				System.out.println("Client STOP button pressed");
-				System.out.println(event);
-				
+				System.out.println(event);			
 
 			}
 		}); // end anonymous inner class, and end call to addActionListener
@@ -133,10 +143,6 @@ public class KK_App_Main_START extends JFrame {
 					try {
 						
 						kkclientapp = new KK_ClientGUI_App();
-//						client.setLocation(1500,100);
-//						client.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//						client.setVisible(true);
-
 
 					} catch (IOException e) {
 						System.err.println("Unable to process client request");

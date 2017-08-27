@@ -1,66 +1,52 @@
 package a_a;
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.Socket;
-import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
 
-public class KK_ClientGUI_App extends JFrame implements ActionListener {
+public class KK_ClientGUI_App extends JFrame  {	
     
-	Socket kkSocket = null;
-    PrintWriter writeOutput = null;
-    BufferedReader readInput = null;
-    BufferedReader strInput = null;
-    String fromServer;
-    String fromUser;
-//	private JTextField hostField;
-//	private JTextField portField;
+	private static final long serialVersionUID = 1L; // added: The serializable class KK_ClientGUI_App does not declare a static final serialVersionUID field of type long
+	private Socket kkSocket = null;
+	private PrintWriter writeOutput = null;
+	private BufferedReader readInput = null;
+	private BufferedReader strInput = null;
+	private String fromServer;
+	private String fromUser;
 	private JTextField responseField;
-//	private JButton connectButton;
-//	private JButton quitButton;
-	
 	private JTextArea displayArea;
 	private boolean shutdownClient;
-
-
 	private String shutdownServer;
 	private Thread serverThread;
 	
-	private final ExecutorService clientProcessingPool = Executors.newCachedThreadPool();
+	private final ExecutorService clientProcessingPool;
 	
     public KK_ClientGUI_App() throws IOException {
+
     	super("Super Knock-Knock Client");
     	
+    	clientProcessingPool = Executors.newCachedThreadPool();
+    	
+    	// client response field, starts off with the obvious answer:
 		responseField = new JTextField("who's there?");
 		responseField.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
+								
 				try {
 					displayArea.append("Client: " + e.getActionCommand() + "\n"); 
 					writeOutput.println(responseField.getText());
@@ -69,9 +55,7 @@ public class KK_ClientGUI_App extends JFrame implements ActionListener {
 				catch (Exception ex) {
 					ex.printStackTrace();
 				}
-				responseField.setText("");
-
-				
+				responseField.setText("");	// clears response field ready for user input				
 			}
 		});
 		
@@ -121,7 +105,6 @@ public class KK_ClientGUI_App extends JFrame implements ActionListener {
     			break;
     		}
     			
-
     		fromUser = strInput.readLine();		
     		if (fromUser != null) {
     			System.out.println("Client: " + fromUser);
@@ -147,14 +130,8 @@ public class KK_ClientGUI_App extends JFrame implements ActionListener {
 		client.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		client.setVisible(true);
 
-
     }
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public void startClient() throws IOException {
 
@@ -191,7 +168,7 @@ public class KK_ClientGUI_App extends JFrame implements ActionListener {
 			try {
 
 				clientProcessingPool.shutdown();
-				closeConnections();
+//				closeConnections();
 				System.out.println("replaced serverSocket.close()");
 
 //				try {
@@ -203,9 +180,9 @@ public class KK_ClientGUI_App extends JFrame implements ActionListener {
 //				}
 
 			}
-			catch (SocketException ex) {
-				ex.printStackTrace();
-			}
+//			catch (SocketException ex) {
+//				ex.printStackTrace();
+//			}
 			finally {
 				
 				// currently empty
@@ -216,13 +193,13 @@ public class KK_ClientGUI_App extends JFrame implements ActionListener {
 		serverThread.start();
 
 	} 
-	public void closeConnections() throws IOException {
-		
-//		System.out.println("closeConnections()");
-//		outputToClient.close();
-//		inputFromClient.close();
-//		socket.close();
-//		serverSocket.close();
-	}
+//	public void closeConnections() throws IOException {
+//		
+////		System.out.println("closeConnections()");
+////		outputToClient.close();
+////		inputFromClient.close();
+////		socket.close();
+////		serverSocket.close();
+//	}
 	
 }

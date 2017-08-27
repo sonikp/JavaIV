@@ -1,7 +1,6 @@
 package a_a;
 
 import java.security.SecureRandom;
-import java.util.Random;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -28,6 +27,7 @@ public class KK_ServerProtocol {
     private int currentJoke = rand.nextInt(19);			
      
     public KK_ServerProtocol() throws FileNotFoundException, IOException {
+ 
     	//get properties file
     	Properties prop = new Properties();
     	prop.load(new FileInputStream("KnockKnockJokesData.properties"));
@@ -38,10 +38,9 @@ public class KK_ServerProtocol {
     
     public String processInput(String theInput) throws FileNotFoundException, IOException {
     	
-
-    	//below code will print out all the states, their capitals, and nicknames
+    	//INFO: demonstrates state by printing out all the knock knock CLUE and ANSWER details
     	for (int i = 0; i < knockknockInfo.length; i++) {
-    		System.out.print("\n" + i + ":");	// orig:  "State "+ i + ":"
+    		System.out.print("\n" + i + ":");	
     		System.out.print("\n");
     		System.out.print("Clue: " + knockknockInfo[i][CLUE]);
     		System.out.print("\n");
@@ -119,9 +118,5 @@ public class KK_ServerProtocol {
 		return array;
 	}
 	
-	// randomize // http://www.vogella.com/tutorials/JavaAlgorithmsShuffle/article.html
-	
-	
-
 	
 }
