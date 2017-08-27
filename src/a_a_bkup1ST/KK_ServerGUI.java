@@ -1,4 +1,4 @@
-package a_chatserver_combining;
+package a_a_bkup1ST;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -21,7 +21,7 @@ import javax.swing.JTextField;
  * 
  * The server as a GUI
  */
-public class ServerGUI extends JFrame implements ActionListener {	// , WindowListener
+public class KK_ServerGUI extends JFrame implements ActionListener {	// , WindowListener
 	
 	private static final long serialVersionUID = 1L;
 	// the stop and start buttons
@@ -32,7 +32,7 @@ public class ServerGUI extends JFrame implements ActionListener {	// , WindowLis
 	private JTextField tPortNumber;
 	JPanel north;
 	// my server
-	private Server server;
+	private KK_Server server;
 	private String portChat = "1500";
 	private String portKK = "4444";
 	
@@ -43,7 +43,7 @@ public class ServerGUI extends JFrame implements ActionListener {	// , WindowLis
 	
 	
 	// server constructor that receive the port to listen to for connection as parameter
-	ServerGUI(int port) {
+	KK_ServerGUI(int port) {
 		super("KK Server");
 		System.out.println("ServerGUI constructor: " + port);
 		knockKnockServer ();
@@ -182,7 +182,7 @@ public class ServerGUI extends JFrame implements ActionListener {	// , WindowLis
 			return;
 		}
 		// create a new Server
-		server = new Server(port, this);
+		server = new KK_Server(port, this);
 		// and start it as a thread
 		new ServerRunning().start();
 		stopStart.setText("Stop");

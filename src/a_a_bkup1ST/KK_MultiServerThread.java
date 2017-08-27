@@ -1,4 +1,4 @@
-package a_chatserver_combining;
+package a_a_bkup1ST;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,10 +6,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class KKMultiServerThread extends Thread {
+public class KK_MultiServerThread extends Thread {
 	private Socket socket = null;
 
-	public KKMultiServerThread(Socket socket) {
+	public KK_MultiServerThread(Socket socket) {
 		super("KKMultiServerThread");
 		this.socket = socket;
 	}
@@ -23,7 +23,7 @@ public class KKMultiServerThread extends Thread {
 							socket.getInputStream()));
 
 			String inputLine, outputLine;
-			KnockKnockServerProtocol kkp = new KnockKnockServerProtocol();
+			KK_ServerProtocol kkp = new KK_ServerProtocol();
 			outputLine = kkp.processInput(null);
 			out.println(outputLine);
 

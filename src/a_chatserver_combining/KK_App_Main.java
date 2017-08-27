@@ -20,10 +20,10 @@ import aa_a_currentassignment.KnockKnockClient;
 import java.awt.Color;
 import java.util.concurrent.ExecutionException;
 
-public class Chat_Main extends JFrame {
+public class KK_App_Main extends JFrame {
 	
 	// application objects
-	private ServerGUI serverapp; // = new ServerGUI(4444);
+	private KK_ServerGUI serverapp; // = new ServerGUI(4444);
 	private String localhost = "127.0.0.7";
 	private ClientGUI clientapp; // = new ClientGUI(localhost, 4444);
 	private KnockKnockClient kkclientapp;	
@@ -44,7 +44,7 @@ public class Chat_Main extends JFrame {
 	private Thread serverThread;
 	
 	// constructor
-	public Chat_Main() throws IOException {
+	public KK_App_Main() throws IOException {
 		
 		super("KnockKnock Launch Application");
 		
@@ -62,7 +62,7 @@ public class Chat_Main extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("Start SERVER button pressed");
-				serverapp = new ServerGUI(4445);
+				serverapp = new KK_ServerGUI(4445);
 				serverapp.serverStartStop();
 //				System.out.println(serverapp.getServerState());
 
@@ -244,7 +244,7 @@ public class Chat_Main extends JFrame {
 	// main method begins
 	public static void main(String[] args) throws IOException {
 		
-		Chat_Main application = new Chat_Main();
+		KK_App_Main application = new KK_App_Main();
 		application.setLocationRelativeTo(null);
 		application.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}

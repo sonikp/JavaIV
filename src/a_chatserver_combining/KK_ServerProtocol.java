@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Properties;
 
-public class KnockKnockServerProtocol {
+public class KK_ServerProtocol {
     
 	//Key for 2nd part of array
 	final static int CLUE = 0;
@@ -38,7 +38,7 @@ public class KnockKnockServerProtocol {
                        
 	*/
     
-    public KnockKnockServerProtocol() throws FileNotFoundException, IOException {
+    public KK_ServerProtocol() throws FileNotFoundException, IOException {
     	//get properties file
     	Properties prop = new Properties();
     	prop.load(new FileInputStream("KnockKnockData.properties"));

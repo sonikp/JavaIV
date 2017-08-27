@@ -1,4 +1,4 @@
-package a_chatserver_combining;
+package a_a_bkup1ST;
 
 
 import java.io.IOException;
@@ -14,13 +14,13 @@ import java.util.Date;
 /*
  * The server that can be run both as a console application or a GUI
  */
-public class Server {
+public class KK_Server {
 	// a unique ID for each connection
 	private static int uniqueId;
 	// an ArrayList to keep the list of the Client
 	private ArrayList<ClientThread> clientArrayList;
 	// if I am in a GUI
-	private ServerGUI sg;
+	private KK_ServerGUI sg;
 	// to display time
 	private SimpleDateFormat sdf;
 	// the port number to listen for connection
@@ -39,13 +39,13 @@ public class Server {
 	 *  server constructor that receive the port to listen to for connection as parameter
 	 *  in console
 	 */
-	public Server(int port) {
+	public KK_Server(int port) {
 		
 		this(port, null);
 		System.out.println("Server.java constructor port :" + port);
 	}
 	
-	public Server(int port, ServerGUI sg) {
+	public KK_Server(int port, KK_ServerGUI sg) {
 		// GUI or not
 		this.sg = sg;
 		// the port
@@ -72,7 +72,7 @@ public class Server {
 				// format message saying we are waiting
 				display("Server waiting for Knock Knock Clients on port " + port + ".");
 				
-				new KKMultiServerThread(serverSocket.accept()).start();
+				new KK_MultiServerThread(serverSocket.accept()).start();
 				
 //				Socket socket = serverSocket.accept();  	// accept connection
 				// if I was asked to stop
@@ -216,10 +216,10 @@ public class Server {
 		for(int i = clientArrayList.size(); --i >= 0;) {
 			ClientThread ct = clientArrayList.get(i);
 			// try to write to the Client if it fails remove it from the list
-			if(!ct.writeMsg(messageLf)) {
-				clientArrayList.remove(i);
-				display("Disconnected Client " + ct.username + " removed from list.");
-			}
+//			if(!ct.writeMsg(messageLf)) {
+//				clientArrayList.remove(i);
+//				display("Disconnected Client " + ct.username + " removed from list.");
+//			}
 		}
 	}
 
@@ -263,7 +263,7 @@ public class Server {
 				
 		}
 		// create a server object and start it
-		Server server = new Server(portNumber);
+		KK_Server server = new KK_Server(portNumber);
 //		server.startChat();
 		server.startKnockKnock();
 	}
@@ -279,7 +279,7 @@ public class Server {
 		// the Username of the Client
 		String username;
 		// the only type of message a will receive
-		ChatMessage cm;
+//		ChatMessage cm;
 		// the date I connect
 		String date;
 		
@@ -318,31 +318,31 @@ public class Server {
 			boolean keepGoing = true;
 			while(keepGoing) {
 				// read a String (which is an object)
-				try {
-					cm = (ChatMessage) sInput.readObject();
-				}
-				catch (IOException e) {
-					display(username + " Exception reading Streams: " + e);
-					break;				
-				}
-				catch(ClassNotFoundException e2) {
-					break;
-				}
+//				try {
+////					cm = (ChatMessage) sInput.readObject();
+//				}
+//				catch (IOException e) {
+//					display(username + " Exception reading Streams: " + e);
+//					break;				
+//				}
+//				catch(ClassNotFoundException e2) {
+//					break;
+//				}
 				// the messaage part of the ChatMessage
-				String message = cm.getMessage();
+//				String message = cm.getMessage();
 
 				// Switch on the type of message receive
-				switch(cm.getType()) {
+//				switch(cm.getType()) {
 
-				case ChatMessage.MESSAGE:
-					broadcast(username + ": " + message);
-					break;
-				case ChatMessage.LOGOUT:
-					display(username + " disconnected with a LOGOUT message.");
-					keepGoing = false;
-					break;
-				case ChatMessage.WHOISIN:
-					writeMsg("List of the users connected at " + sdf.format(new Date()) + "\n");
+//				case ChatMessage.MESSAGE:
+//					broadcast(username + ": " + message);
+//					break;
+//				case ChatMessage.LOGOUT:
+//					display(username + " disconnected with a LOGOUT message.");
+//					keepGoing = false;
+//					break;
+//				case ChatMessage.WHOISIN:
+//					writeMsg("List of the users connected at " + sdf.format(new Date()) + "\n");
 					// scan al the users connected
 					for(int i = 0; i < clientArrayList.size(); ++i) {
 						ClientThread ct = clientArrayList.get(i);
@@ -353,25 +353,25 @@ public class Server {
 			}
 			// remove myself from the arrayList containing the list of the
 			// connected Clients
-			remove(id);
-			close();
+//			remove(id);
+//			close();
 		}
 		
 		// try to close everything
 		private void close() {
 			// try to close the connection
-			try {
-				if(sOutput != null) sOutput.close();
-			}
-			catch(Exception e) {}
-			try {
-				if(sInput != null) sInput.close();
-			}
-			catch(Exception e) {};
-			try {
-				if(socket != null) socket.close();
-			}
-			catch (Exception e) {}
+//			try {
+//				if(sOutput != null) sOutput.close();
+//			}
+//			catch(Exception e) {}
+//			try {
+//				if(sInput != null) sInput.close();
+//			}
+//			catch(Exception e) {};
+//			try {
+//				if(socket != null) socket.close();
+//			}
+//			catch (Exception e) {}
 		}
 
 		/*
@@ -384,16 +384,16 @@ public class Server {
 				return false;
 			}
 			// write the message to the stream
-			try {
-				sOutput.writeObject(msg);
-			}
-			// if an error occurs, do not abort just inform the user
-			catch(IOException e) {
-				display("Error sending message to " + username);
-				display(e.toString());
-			}
+//			try {
+////				sOutput.writeObject(msg);
+//			}
+//			// if an error occurs, do not abort just inform the user
+//			catch(IOException e) {
+////				display("Error sending message to " + username);
+//				display(e.toString());
+//			}
 			return true;
-		}
+//		}
 	}
 }
 

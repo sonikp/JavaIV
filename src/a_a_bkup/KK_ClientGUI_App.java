@@ -1,4 +1,4 @@
-package a_chatserver_combining;
+package a_a_bkup;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
@@ -28,7 +28,7 @@ import javax.swing.JTextField;
 
 
 
-public class KnockKnockClient extends JFrame implements ActionListener {
+public class KK_ClientGUI_App extends JFrame implements ActionListener {
     
 	Socket kkSocket = null;
     PrintWriter writeOutput = null;
@@ -51,7 +51,7 @@ public class KnockKnockClient extends JFrame implements ActionListener {
 	
 	private final ExecutorService clientProcessingPool = Executors.newCachedThreadPool();
 	
-    public KnockKnockClient() throws IOException {
+    public KK_ClientGUI_App() throws IOException {
     	super("Super Knock-Knock Client");
     	
 		responseField = new JTextField("who's there?");
@@ -142,7 +142,7 @@ public class KnockKnockClient extends JFrame implements ActionListener {
 	
 	public static void main(String[] args) throws IOException {
 		
-		KnockKnockClient client = new KnockKnockClient();
+		KK_ClientGUI_App client = new KK_ClientGUI_App();
 		client.setLocation(1500,100);
 		client.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		client.setVisible(true);
@@ -168,7 +168,7 @@ public class KnockKnockClient extends JFrame implements ActionListener {
 				public void run() {
 					try {
 						
-						KnockKnockClient client = new KnockKnockClient();
+						KK_ClientGUI_App client = new KK_ClientGUI_App();
 						client.setLocation(1500,100);
 						client.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						client.setVisible(true);

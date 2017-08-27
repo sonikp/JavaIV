@@ -30,7 +30,7 @@ public class ClientGUI extends JFrame implements ActionListener {
 	// the default port number
 	private int defaultPort;
 	private String defaultHost;
-	private KnockKnockClient kkclient;
+	private KK_Client_App kkclient;
 
 	// Constructor connection receiving a socket number
 	ClientGUI(String host, int port) throws IOException {
@@ -43,7 +43,7 @@ public class ClientGUI extends JFrame implements ActionListener {
 	}
 	
 	public void startKnockKnockClient() throws IOException {
-		kkclient = new KnockKnockClient();
+		kkclient = new KK_Client_App();
 		kkclient.setLocation(1500,100);
 		kkclient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		kkclient.setVisible(true);

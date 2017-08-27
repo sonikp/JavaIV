@@ -24,7 +24,7 @@ public class KnockKnockServerController extends Thread {
 	private BufferedReader inputFromClient;
 	private String inputLine, outputLine;
 
-	private KnockKnockServerProtocol knockKnockProtocol;
+	private KK_ServerProtocol knockKnockProtocol;
 
 	public KnockKnockServerController(Socket socket) throws IOException {
 		super("KKMultiServerThread");
@@ -62,7 +62,7 @@ public class KnockKnockServerController extends Thread {
 							socket.getInputStream()));
 
 
-			knockKnockProtocol = new KnockKnockServerProtocol();
+			knockKnockProtocol = new KK_ServerProtocol();
 			outputLine = knockKnockProtocol.processInput(null);
 			outputToClient.println(outputLine);
 
