@@ -1,4 +1,4 @@
-package a_chatserver_combining;
+package a_chatserver_combining_bkup3RD;
 
 
 import java.io.IOException;
@@ -78,9 +78,9 @@ public class Server {
 				// if I was asked to stop
 				if(!keepGoing)
 					break;
-//				ClientThread clientThreadPool = new ClientThread(socket);  // make a thread of it
-//				clientArrayList.add(clientThreadPool);									// save it in the ArrayList
-//				clientThreadPool.start();
+				ClientThread clientThreadPool = new ClientThread(socket);  // make a thread of it
+				clientArrayList.add(clientThreadPool);									// save it in the ArrayList
+				clientThreadPool.start();
 			}
 			// I was asked to stop
 			try {
@@ -282,11 +282,9 @@ public class Server {
 		ChatMessage cm;
 		// the date I connect
 		String date;
-		
 
 		// Constructor
 		ClientThread(Socket socket) {
-			
 			// a unique id
 			id = ++uniqueId;
 			this.socket = socket;

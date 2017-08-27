@@ -45,7 +45,7 @@ public class KnockKnockClient extends JFrame implements ActionListener {
 	private JTextArea displayArea;
 	private boolean shutdownClient;
 
-	private Object threadServerController;
+
 	private String shutdownServer;
 	private Thread serverThread;
 	

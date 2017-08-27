@@ -1,10 +1,9 @@
-package a_chatserver_combining_bkup;
+package a_chatserver_combining_bkup3RD;
 
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 
 
 /*
@@ -30,27 +29,11 @@ public class ClientGUI extends JFrame implements ActionListener {
 	// the default port number
 	private int defaultPort;
 	private String defaultHost;
-	private KnockKnockClient kkclient;
 
 	// Constructor connection receiving a socket number
-	ClientGUI(String host, int port) throws IOException {
+	ClientGUI(String host, int port) {
 
 		super("Chat Client");
-		startChatClient(host, port);
-//		startKnockKnockClient();
-
-
-	}
-	
-	public void startKnockKnockClient() throws IOException {
-		kkclient = new KnockKnockClient();
-		kkclient.setLocation(1500,100);
-		kkclient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		kkclient.setVisible(true);
-	}
-	
-	public void startChatClient(String host, int port) throws IOException {
-
 		defaultPort = port;
 		defaultHost = host;
 		
@@ -106,6 +89,7 @@ public class ClientGUI extends JFrame implements ActionListener {
 		setSize(600, 600);
 		setVisible(true);
 		tf.requestFocus();
+
 	}
 
 	// called by the Client to append text in the TextArea 
@@ -213,7 +197,7 @@ public class ClientGUI extends JFrame implements ActionListener {
 	}
 
 	// to start the whole thing the server
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		new ClientGUI("localhost", 1500);
 	}
 
