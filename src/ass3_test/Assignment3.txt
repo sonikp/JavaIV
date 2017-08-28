@@ -79,6 +79,10 @@ reading for shutdown error:
 http://www.dreamincode.net/forums/topic/259777-a-simple-chat-program-with-clientserver-gui-optional/
 https://edn.embarcadero.com/article/31995
 
+Kill MAC tcp oprt
+lsof -n -i4TCP:4444
+kill -9 67888
+
 
 
 
