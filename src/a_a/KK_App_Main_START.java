@@ -7,8 +7,8 @@ package a_a;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+//import javax.swing.JLabel;
+//import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.GridLayout;
@@ -17,12 +17,16 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 
 import java.io.IOException;
-import java.net.SocketException;
-import java.util.concurrent.ExecutionException;
+//import java.net.SocketException;
+//import java.util.concurrent.ExecutionException;
 
 
 public class KK_App_Main_START extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// application objects
 	private KK_ServerAppGUI serverapp; 
 	private KK_ClientGUI_App kkclientapp;
@@ -115,7 +119,19 @@ public class KK_App_Main_START extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				System.out.println("Client STOP button pressed");
-				System.out.println(event);			
+				System.out.println(event);	
+				
+				// starts client application
+//				try {
+//					
+//					shutdownClient = true;
+//					startClient();
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+
+				
 
 			}
 		}); // end anonymous inner class, and end call to addActionListener
@@ -159,6 +175,8 @@ public class KK_App_Main_START extends JFrame {
 //			clientProcessingPool.shutdown();
 			
 			try {
+				
+				kkclientapp.closeConnection();
 
 //				clientProcessingPool.shutdown();
 //				threadServerController.closeConnections();

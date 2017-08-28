@@ -193,13 +193,16 @@ public class KK_ClientGUI_App extends JFrame  {
 		serverThread.start();
 
 	} 
-//	public void closeConnections() throws IOException {
-//		
-////		System.out.println("closeConnections()");
-////		outputToClient.close();
-////		inputFromClient.close();
-////		socket.close();
-////		serverSocket.close();
-//	}
+	public void closeConnections() throws IOException {
+		
+		System.out.println("closeConnections()");
+//		writeOutput.close();
+//		readInput.close();
+//		strInput.close();
+//		kkSocket.close();
+//		System.exit(0);
+	
+//		serverSocket.close();
+	}
 	
 }
