@@ -1,0 +1,96 @@
+https://www.reddit.com/r/learnprogramming/comments/2a9ygh/1000_beginner_programming_projects_xpost/
+
+http://www.dreamincode.net/forums/topic/78802-martyr2s-mega-project-ideas-list/
+
+https://github.com/karan/Projects
+
+Java Derby 
+Window Builder Pro = in Eclipse = For building Java Gui's
+
+Java 8 Udemy
+
+build a webpage:
+
+www.wix.com
+
+Github's static pages
+
+
+============Android Studio==========
+
+Minimum SDK shows the audience
+
+
+Add an activity to mobile: = Empty Activity
+	- activity = screen within a browser
+	- fragments 
+	
+Custom Activity = leave alone
+
+Two files:
+MainActivity = Java class, where all the java code goes
+main_activity = xml file, where you drag/drop buttons, sliders, configured through properties
+
+Other Files:
+Manifest file: // in folder Manifest = ties the whole application together, including permissions
+	- permissions should always go above the <application> setting in this file
+
+Create Project:
+
+
+Display:
+
+	setContentView(R.layout.activity_main);
+	
+	= Res/layout/activity_main.xml
+	
+	1. double click the file, has Design & Text tab
+	
+	
+	@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+	onCreate = lifecycle methods, think of this as java = main method
+	
+	
+	2. Click green arrrow
+	
+	Choose Nexus 6
+	
+	3. for additional screens
+	- rh click package, select new and pick new blank activity
+	- this then get's it's own activity_filename
+		- creates new files in /layout folder
+
+
+// github jamesmesa webViewerUCSD
+
+https://github.com/JamesMesa/WebViewerUCSD
+
+https://github.com/JamesMesa/WebViewerUCSD/tree/master/app/src/main/java/edu/ucsdextension/webviewerucsd
+
+https://www.youtube.com/watch?v=32bjoaAlG60&feature=youtu.be
+https://www.youtube.com/watch?v=H0FnJnR0ZaU&feature=youtu.be
+
+
+
+install files:
+/Users/mfloerchinger/Library/Android/sdk/extras/google/m2repository
+/Users/mfloerchinger/AndroidStudioProjects
+
+
+
+
+
+
+
+
+
+
+
+
+
+
